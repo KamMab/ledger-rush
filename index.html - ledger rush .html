@@ -1,0 +1,1981 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Ledger Rush: study games for intermediate accounting — quick-fire, Learn, flashcards, match and free response.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ledger Rush</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: a light ledger book. White header with a gilt rule; pale sage columnar paper; white ruled sheets hold each question. Deliberately light in every theme. */
+:root{
+  --bg:#F6F9F3; --surface:#FFFFFF; --surface-2:#F7FAF5; --ink:#16241C; --muted:#5C6C61;
+  --line:#E3EBDD; --line-strong:#C3D3BB; --brand:#E3F0E2; --brand-2:#D3E7D3; --brand-ink:#1C4D35;
+  --gilt:#B6862A; --accent:#22764A; --accent-ink:#FFFFFF; --red:#B3352C; --red-soft:#FBE8E5;
+  --ok-soft:#E6F3E8; --gold-soft:#F7EED8; --margin:#EDB5AE; --shadow:0 1px 2px rgba(22,36,28,.06),0 8px 24px -12px rgba(22,36,28,.18);
+  --f-display:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif;
+  --f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:14px; color-scheme:light;
+  --header:rgba(255,255,255,.92); --cover-a:#EEF6EC; --cover-b:#DCEBDA; --colline:#EBF1E6; --scrim:rgba(22,36,28,.35);
+}
+:root.lr-dark{
+  --bg:#0F1612; --surface:#17211B; --surface-2:#1C2821; --ink:#E3ECE5; --muted:#98AA9E;
+  --line:#26342C; --line-strong:#3B4F43; --brand:#1E3127; --brand-2:#2E4A3A; --brand-ink:#CFE6D4;
+  --gilt:#D8AC52; --accent:#6CC490; --accent-ink:#0B1610; --red:#F07B70; --red-soft:#3A1F1C;
+  --ok-soft:#183022; --gold-soft:#2E2715; --margin:#4E3330; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 28px -14px rgba(0,0,0,.7);
+  --header:rgba(23,33,27,.92); --cover-a:#20352A; --cover-b:#16271E; --colline:#131C17; --scrim:rgba(0,0,0,.55); color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;
+  background-image:repeating-linear-gradient(90deg,transparent 0 63px,var(--colline) 63px 64px);background-attachment:fixed}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--gilt);outline-offset:2px}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+
+/* cover band */
+.cover{background:var(--header);backdrop-filter:blur(8px);color:var(--brand-ink);position:sticky;top:env(safe-area-inset-top,0px);z-index:5;
+  border-bottom:2px solid var(--gilt);box-shadow:0 4px 18px -12px rgba(0,0,0,.3)}
+.cover-in{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:12px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:-.01em;background:none;border:0;padding:0;color:var(--brand-ink);display:flex;align-items:center;gap:10px}
+.brand svg{width:26px;height:26px}
+.crumbs{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:0}
+.crumbs button{background:none;border:0;padding:0;color:inherit;text-decoration:underline;text-underline-offset:3px;letter-spacing:inherit;text-transform:inherit;font-size:inherit}
+.cover-right{margin-left:auto;display:flex;align-items:center;gap:14px;font-family:var(--f-mono);font-size:14px}
+
+.wrap{max-width:980px;margin:0 auto;padding-inline:16px;padding-block:32px 72px;display:flex;flex-direction:column;gap:26px}
+.narrow{max-width:780px;margin-inline:auto;width:100%}
+
+h1.display{font-family:var(--f-display);font-weight:800;font-size:clamp(38px,7vw,64px);line-height:.95;letter-spacing:-.03em;margin:0;text-wrap:balance}
+h2{font-family:var(--f-display);font-weight:700;font-size:22px;margin:0;letter-spacing:-.01em;text-wrap:balance}
+.lede{color:var(--muted);max-width:60ch;margin:6px 0 0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1.5px solid var(--line-strong);background:var(--surface);
+  padding:12px 20px;border-radius:12px;font-weight:700;transition:transform .12s,background .12s,border-color .12s,box-shadow .12s}
+.btn:hover:not([disabled]){border-color:var(--ink)}
+.btn:active:not([disabled]){transform:translateY(1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);box-shadow:0 4px 0 -1px color-mix(in srgb,var(--accent) 55%,#000)}
+.btn.primary:hover:not([disabled]){border-color:var(--accent);filter:brightness(1.06)}
+.btn.primary:active:not([disabled]){box-shadow:0 1px 0 -1px color-mix(in srgb,var(--accent) 55%,#000);transform:translateY(3px)}
+.btn.big{padding:16px 26px;font-size:17px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn.quiet{border-color:transparent;background:transparent;font-weight:400;color:var(--muted);padding-inline:10px}
+.btn.quiet:hover{color:var(--ink)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.panel-pad{padding:22px}
+@media (max-width:520px){.panel-pad{padding:18px}}
+
+/* library */
+.shelf{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.book{display:flex;flex-direction:column;overflow:hidden;padding:0;text-align:left;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.book:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(0,0,0,.06),0 18px 34px -16px rgba(22,36,28,.35)}
+.book-cover{background:var(--brand);color:var(--brand-ink);padding:20px 20px 18px;position:relative;min-height:150px;display:flex;flex-direction:column;justify-content:space-between;
+  background-image:linear-gradient(90deg,var(--brand-2) 0 10px,transparent 10px 14px,var(--line-strong) 14px 15px,transparent 15px),linear-gradient(160deg,var(--cover-a),var(--cover-b))}
+.book-cover .num{font-family:var(--f-display);font-weight:800;font-size:68px;line-height:.8;color:var(--gilt);letter-spacing:-.04em;padding-left:10px}
+.book-cover .ttl{font-family:var(--f-display);font-weight:700;font-size:20px;line-height:1.15;padding-left:10px;text-wrap:balance}
+.book-cover .eyebrow{color:var(--muted);padding-left:10px}
+.book-body{padding:16px 20px 18px;display:flex;align-items:center;gap:16px}
+.book-stats{display:flex;flex-direction:column;gap:2px;font-size:14px;color:var(--muted);min-width:0}
+.book-stats b{color:var(--ink);font-family:var(--f-mono);font-weight:600}
+.ring{flex:none}
+.ring text{font-family:var(--f-mono);font-weight:600;font-size:13px;fill:var(--ink)}
+.book.add{border:2px dashed var(--line-strong);background:transparent;box-shadow:none;justify-content:center;padding:26px;gap:10px;cursor:default}
+.book.add:hover{transform:none}
+.book.add strong{font-family:var(--f-display);font-size:19px}
+.book.add p{margin:0;color:var(--muted);font-size:14px}
+
+/* setup */
+.setup{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:820px){.setup{grid-template-columns:1fr}}
+.step{display:flex;flex-direction:column;gap:12px}
+.step + .step{margin-top:26px;padding-top:24px;border-top:1px solid var(--line)}
+.step-h{display:flex;align-items:baseline;gap:10px}
+.step-h .eyebrow{color:var(--gilt);font-weight:600}
+.modes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.modes{grid-template-columns:1fr}}
+.mode{display:flex;flex-direction:column;gap:6px;text-align:left;padding:16px;border:2px solid var(--line);border-radius:12px;background:var(--surface-2);min-width:0;transition:border-color .12s,background .12s}
+.mode:hover{border-color:var(--line-strong)}
+.mode[aria-pressed="true"]{border-color:var(--accent);background:var(--ok-soft)}
+.mode .mi{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:700;font-size:18px}
+.mode .mi svg{width:24px;height:24px;flex:none;color:var(--accent)}
+.mode p{margin:0;font-size:14px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line-strong);background:var(--surface);border-radius:999px;padding:8px 16px;font-family:var(--f-mono);font-weight:600;font-variant-numeric:tabular-nums;min-width:52px;transition:all .12s}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.topics{display:flex;flex-direction:column;gap:8px}
+.tp{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;text-align:left;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:var(--surface)}
+.tp .box{width:20px;height:20px;border:2px solid var(--line-strong);border-radius:6px;display:grid;place-items:center}
+.tp[aria-pressed="true"] .box{background:var(--accent);border-color:var(--accent)}
+.tp[aria-pressed="true"] .box::after{content:"";width:9px;height:5px;border:2.5px solid var(--accent-ink);border-top:0;border-right:0;transform:rotate(-45deg) translate(1px,-1px)}
+.tp[aria-pressed="false"]{opacity:.62}
+.tp .nm{min-width:0}
+.tp .nm strong{display:block;font-weight:700;font-size:15px}
+.tp .nm small{color:var(--muted);font-size:13px}
+.meter{display:flex;gap:3px}
+.meter i{width:10px;height:14px;border-radius:3px;background:var(--line)}
+.meter i.on{background:var(--accent)}
+.summary{position:sticky;top:90px;display:flex;flex-direction:column;gap:16px}
+.summary dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:15px}
+.summary dt{color:var(--muted)}
+.summary dd{margin:0;text-align:right;font-family:var(--f-mono);font-weight:600}
+.note{font-size:13.5px;color:var(--muted);margin:0}
+.tiny-actions{display:flex;gap:4px;flex-wrap:wrap}
+
+/* HUD */
+.hud{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-family:var(--f-mono);font-size:14px;box-shadow:var(--shadow)}
+.pill b{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.pill.combo{color:var(--gilt);font-weight:600}
+.flags{display:flex;gap:2px;margin-left:auto}
+.flags svg{width:22px;height:22px}
+.flags .lost{opacity:.18}
+.track{height:8px;background:var(--line);border-radius:99px;overflow:hidden;position:relative}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:99px;transition:width .35s ease}
+.timer{height:3px;margin-top:5px;border-radius:2px;overflow:hidden}
+.timer i{display:block;height:100%;background:var(--gilt);width:100%}
+
+/* sheet (question card) */
+.sheet{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);position:relative;overflow:hidden;
+  padding:24px 24px 24px 60px;
+  background-image:linear-gradient(90deg,transparent 40px,var(--margin) 40px 41px,transparent 41px,transparent 44px,var(--margin) 44px 45px,transparent 45px)}
+@media (max-width:520px){.sheet{padding:20px 16px 20px 46px;background-image:linear-gradient(90deg,transparent 30px,var(--margin) 30px 31px,transparent 31px)}}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.tag{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--muted)}
+.tag.retry{color:var(--red);border-color:var(--red);background:var(--red-soft)}
+.prompt{font-size:clamp(19px,3.4vw,23px);line-height:1.4;margin:0 0 18px;font-weight:700;text-wrap:pretty}
+.scenario{margin:0 0 14px;font-size:16.5px}
+.big-item{font-family:var(--f-display);font-weight:700;font-size:clamp(23px,4.4vw,32px);line-height:1.15;margin:6px 0 20px;text-wrap:balance;letter-spacing:-.01em}
+.je-wrap{overflow-x:auto;margin:0 0 18px;border:1px solid var(--line);border-radius:10px}
+table.je{border-collapse:collapse;width:100%;min-width:430px;font-size:15px}
+table.je th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:8px 10px;background:var(--surface-2);border-bottom:1.5px solid var(--line-strong)}
+table.je td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+table.je tr:last-child td{border-bottom:0}
+table.je td.amt,table.je th.amt{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;width:112px;border-left:1px solid var(--line)}
+table.je td.cr-acct{padding-left:36px}
+table.je td.date{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:nowrap;width:1%}
+.blank{display:inline-block;min-width:74px;padding:1px 10px;border:2px dashed var(--gilt);border-radius:6px;color:var(--gilt);background:var(--gold-soft);font-family:var(--f-mono);font-weight:600;text-align:center}
+.blank.ok{border-style:solid;border-color:var(--accent);color:var(--accent);background:var(--ok-soft)}
+.blank.bad{border-style:solid;border-color:var(--red);color:var(--red);background:var(--red-soft)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opts.sort{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:560px){.opts,.opts.sort{grid-template-columns:1fr}}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;padding:13px 15px;background:var(--surface);border:1.5px solid var(--line-strong);border-radius:10px;min-width:0;transition:border-color .12s,background .12s,transform .12s}
+.opt:hover:not([disabled]){border-color:var(--ink);transform:translateY(-1px)}
+.opt kbd{font-family:var(--f-mono);font-size:11.5px;border:1px solid var(--line-strong);border-bottom-width:2px;border-radius:5px;padding:0 6px;color:var(--muted);flex:none;margin-top:2px;background:var(--surface-2)}
+.opt span{min-width:0}
+.opt.amount span{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-weight:600}
+.opt.ok{border-color:var(--accent);background:var(--ok-soft)}
+.opt.bad{border-color:var(--red);background:var(--red-soft)}
+.opt[disabled]{cursor:default}
+.opts.sort .opt{justify-content:center;text-align:center;font-weight:700;padding:18px 10px}
+.numrow{display:flex;gap:10px;flex-wrap:wrap}
+.numrow label{position:relative;flex:1 1 220px;min-width:0}
+.numrow label::before{content:"$";position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:var(--f-mono);color:var(--muted)}
+.numrow input{width:100%;padding:13px 14px 13px 30px;font-family:var(--f-mono);font-size:20px;font-variant-numeric:tabular-nums;background:var(--surface-2);border:1.5px solid var(--line-strong);border-radius:10px}
+.feedback{margin-top:18px;padding:16px 18px;border-radius:12px;background:var(--ok-soft);display:flex;flex-direction:column;gap:10px}
+.feedback.bad{background:var(--red-soft)}
+.feedback p{margin:0}
+.feedback .row{justify-content:space-between}
+.feedback .pts{font-family:var(--f-mono);font-weight:600}
+.stamp{position:absolute;right:20px;top:18px;font-family:var(--f-mono);font-weight:600;font-size:17px;letter-spacing:.16em;padding:4px 12px;border:3px double currentColor;border-radius:6px;transform:rotate(-7deg);opacity:.92;pointer-events:none;background:var(--surface)}
+.stamp.ok{color:var(--accent)} .stamp.bad{color:var(--red)}
+
+/* FRQ */
+.exhibit{background:var(--surface-2);border:1px solid var(--line);border-left:4px solid var(--gilt);border-radius:10px;padding:14px 16px;margin:0 0 20px;font-size:16.5px}
+.parts{display:flex;flex-direction:column;gap:22px}
+.part{display:flex;flex-direction:column;gap:10px}
+.part-h{display:flex;gap:12px;align-items:flex-start}
+.part-h .lt{flex:none;width:30px;height:30px;border-radius:50%;background:var(--ok-soft);color:var(--accent);border:1.5px solid var(--accent);display:grid;place-items:center;font-family:var(--f-display);font-weight:700}
+.part-h p{margin:3px 0 0;font-weight:700;flex:1;min-width:0}
+.part-h .pt{font-family:var(--f-mono);font-size:12.5px;color:var(--muted);white-space:nowrap;margin-top:5px}
+.part textarea{width:100%;min-height:118px;resize:vertical;padding:12px 14px;border:1.5px solid var(--line-strong);border-radius:10px;background:var(--surface-2);font-family:var(--f-mono);font-size:14.5px;line-height:1.6}
+.part textarea:focus{border-color:var(--accent);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.part textarea[readonly]{opacity:.85}
+.grade{border-radius:10px;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:8px}
+.grade.full{background:var(--ok-soft);border-color:transparent}
+.grade.part0{background:var(--red-soft);border-color:transparent}
+.grade.partial{background:var(--gold-soft);border-color:transparent}
+.grade .gh{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.grade .score{font-family:var(--f-mono);font-weight:600;font-size:15px}
+.grade ul{margin:0;padding-left:20px;font-size:14px}
+.grade p{margin:0;font-size:15px}
+details.model summary{cursor:pointer;font-weight:700;font-size:14px;color:var(--accent)}
+pre.model{margin:8px 0 0;white-space:pre-wrap;overflow-x:auto;font-family:var(--f-mono);font-size:13.5px;line-height:1.6;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.rubric{display:flex;flex-direction:column;gap:6px}
+.rubric label{display:flex;gap:10px;align-items:flex-start;font-size:14.5px;cursor:pointer}
+.rubric input{width:18px;height:18px;accent-color:var(--accent);margin-top:2px;flex:none}
+.rubric .rp{font-family:var(--f-mono);color:var(--muted);font-size:12.5px;margin-left:auto;padding-left:8px;white-space:nowrap}
+.grading{display:flex;gap:12px;align-items:center;color:var(--muted)}
+.spin{width:18px;height:18px;border:2.5px solid var(--line-strong);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.tipbar{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:var(--muted);background:var(--surface-2);border-radius:10px;padding:10px 12px;margin:0 0 18px}
+.tipbar svg{flex:none;width:18px;height:18px;margin-top:2px;color:var(--gilt)}
+.msg{font-size:14px;color:var(--red);margin:0}
+
+/* results */
+.result-top{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}
+@media (max-width:560px){.result-top{grid-template-columns:1fr}}
+.verdict{font-family:var(--f-display);font-weight:800;font-size:clamp(32px,6vw,50px);line-height:1;margin:6px 0 0;letter-spacing:-.02em;text-wrap:balance}
+.statgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);margin-top:18px}
+.statgrid div{padding:14px 4px 0;min-width:0}
+.statgrid b{display:block;font-family:var(--f-mono);font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.statgrid span{font-size:12.5px;color:var(--muted)}
+.misses{display:flex;flex-direction:column}
+.miss{padding:14px 0;border-bottom:1px solid var(--line)}
+.miss:last-child{border-bottom:0}
+.miss p{margin:0}
+.miss .ans{font-weight:700;color:var(--accent);margin-top:3px}
+.miss .why{font-size:14px;color:var(--muted);margin-top:3px}
+.foot{font-size:13px;color:var(--muted);text-align:center}
+.linkish{background:none;border:0;padding:0;text-decoration:underline;color:var(--muted);font-size:13px}
+
+.gear{background:transparent;border:1.5px solid var(--line-strong);border-radius:10px;padding:7px 12px;display:inline-flex;align-items:center;gap:7px;font-family:var(--f-body);font-size:14px;font-weight:700;color:var(--brand-ink)}
+.gear svg{width:18px;height:18px}
+.gear:hover{border-color:var(--ink)}
+@media (max-width:560px){.gear span{display:none}.crumbs{display:none}}
+.scrim{position:fixed;inset:0;background:var(--scrim);z-index:20;display:grid;place-items:center;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.dialog{width:min(460px,100%);max-height:100%;overflow:auto;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45);padding:22px;display:flex;flex-direction:column;gap:22px}
+.dialog-h{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.dialog-h h2{font-size:24px}
+.set{display:flex;flex-direction:column;gap:10px}
+.set h3{margin:0;font-size:15px;font-weight:700}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:10px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:8px;color:var(--muted)}
+.seg button svg{width:18px;height:18px}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow)}
+.x{background:none;border:0;padding:6px;border-radius:8px;color:var(--muted);display:grid;place-items:center}
+.x svg{width:22px;height:22px}
+.pill.clock b{font-size:18px}
+.pill.clock.low{color:var(--red);border-color:var(--red)}
+
+.hid{display:inline-block;min-width:60px;padding:1px 8px;border-radius:6px;background:var(--surface-2);border:1px solid var(--line-strong);color:var(--muted);font-family:var(--f-mono);text-align:center}
+.hid.shown{background:transparent;border-color:transparent;color:var(--ink)}
+
+
+/* learn */
+.lprog{display:flex;align-items:center;gap:8px}
+.lc{flex:none;min-width:40px;height:40px;padding:0 8px;border-radius:999px;display:grid;place-items:center;font-family:var(--f-mono);font-weight:600;font-size:15px;background:var(--surface);border:1.5px solid var(--line-strong);color:var(--ink)}
+.lc.done{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.segs{flex:1;display:flex;gap:6px;min-width:0}
+.lseg{flex:1;height:12px;border-radius:99px;background:var(--line);overflow:hidden}
+.lseg i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .4s ease}
+.lprog .x{margin-left:4px}
+.lneed{margin:-6px 0 14px;font-weight:700;font-size:15px;color:var(--muted)}
+.lneed b{color:var(--ink)}
+.quiz .opts.lopts{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:600px){.quiz .opts.lopts{grid-template-columns:1fr}}
+.ln{flex:none;width:22px;font-family:var(--f-mono);font-weight:600;color:var(--muted);text-align:center}
+.lopts .opt{min-height:76px}
+.quiz .opt.missed{border-color:var(--accent);border-style:dashed;background:transparent}
+.quiz .opt.missed .om{color:var(--accent)}
+.lfoot{display:flex;justify-content:flex-end;margin-top:14px}
+.dk{background:none;border:0;padding:6px 4px;font-weight:700;color:var(--accent);font-size:15px}
+.dk:hover{text-decoration:underline}
+.fb-ans b{display:block}
+.seg.seg3{grid-template-columns:repeat(3,1fr)}
+.mode:last-child:nth-child(odd){grid-column:1/-1}
+
+
+/* study time */
+.tstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tstats div{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.tstats b{display:block;font-family:var(--f-mono);font-size:20px;font-weight:600;font-variant-numeric:tabular-nums}
+.tstats span{font-size:12.5px;color:var(--muted)}
+.tweek{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;align-items:end;height:130px;padding:6px 2px 0;border-bottom:1px solid var(--line)}
+.tday{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;min-width:0}
+.tval{font-family:var(--f-mono);font-size:10.5px;color:var(--muted);height:14px;white-space:nowrap}
+.tcol{flex:1;width:70%;max-width:28px;display:flex;align-items:flex-end}
+.tcol i{display:block;width:100%;background:color-mix(in srgb,var(--accent) 55%,var(--line));border-radius:6px 6px 2px 2px;min-height:0}
+.tday.today .tcol i{background:var(--accent)}
+.tlbl{font-size:11.5px;color:var(--muted);padding-bottom:4px}
+.tday.today .tlbl{color:var(--ink);font-weight:700}
+.tch{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px}
+.tch-h{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.tch-h span{min-width:0;font-size:14.5px}
+.tsub{display:flex;flex-direction:column;gap:6px}
+.trow{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13.5px}
+.trow span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.trow .mono{font-size:12.5px;min-width:5ch;text-align:right}
+.tbar{height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.tbar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.seg button svg{width:16px;height:16px}
+.dialog{width:min(520px,100%)}
+.qnav{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:6px}
+.qnav .x{font-size:24px;line-height:1;width:40px;height:40px;font-family:var(--f-display)}
+.qnav .x[disabled]{opacity:.3;cursor:default}
+.qname{display:flex;flex-direction:column;align-items:center;text-align:center}
+.qname b{font-family:var(--f-display);font-size:18px}
+.qname span{font-size:12.5px;color:var(--muted)}
+button.trow.tq{width:100%;background:none;border:1px solid transparent;border-radius:8px;padding:6px 8px;text-align:left}
+button.trow.tq:hover{border-color:var(--line-strong)}
+button.trow.tq.sel{background:var(--ok-soft);border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.tweek{gap:3px}
+/* FRQ hints */
+.hintwrap{display:flex;flex-direction:column;gap:8px;align-items:flex-start}
+.hintbtn{display:inline-flex;align-items:center;gap:6px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gilt) 45%,transparent);color:var(--gilt);border-radius:999px;padding:5px 12px;font-size:13.5px;font-weight:700}
+.hintbtn svg{width:16px;height:16px}
+.hintbtn:hover{border-color:var(--gilt)}
+.hintbox{display:flex;gap:10px;align-items:flex-start;width:100%;background:var(--gold-soft);border:1px dashed var(--gilt);border-radius:10px;padding:10px 12px}
+.hintbox[hidden]{display:none}
+.hintbox svg{flex:none;width:18px;height:18px;color:var(--gilt);margin-top:2px}
+.hintbox p{margin:0;font-size:15px}
+/* flashcards */
+.fc-tally{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tl{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;padding:5px 12px;border-radius:999px;border:1.5px solid}
+.tl b{font-family:var(--f-mono)}
+.tl.learn{color:#C2571A;border-color:color-mix(in srgb,#C2571A 40%,transparent);background:color-mix(in srgb,#C2571A 8%,var(--surface))}
+.tl.know{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 40%,transparent);background:var(--ok-soft)}
+.flashcard{display:block;width:100%;padding:0;border:0;background:none;perspective:1400px;text-align:center}
+.fc-inner{display:block;position:relative;min-height:clamp(260px,46vh,380px);transition:transform .55s cubic-bezier(.3,.9,.3,1);transform-style:preserve-3d}
+.flashcard.flipped .fc-inner{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:28px 28px 28px 52px;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
+  background-image:linear-gradient(90deg,transparent 30px,var(--margin) 30px 31px,transparent 31px)}
+.fc-face.back{transform:rotateY(180deg);background-color:var(--surface-2)}
+.fc-term{margin:0;font-family:var(--f-display);font-weight:800;font-size:clamp(28px,6vw,44px);line-height:1.1;letter-spacing:-.02em;text-wrap:balance}
+.fc-def{margin:0;font-size:clamp(18px,3.4vw,23px);line-height:1.45;max-width:46ch;text-wrap:pretty}
+.fc-hint{position:absolute;bottom:16px;font-size:12.5px;color:var(--muted)}
+.flashcard:hover .fc-face{border-color:var(--line-strong)}
+.fc-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fc-actions .btn svg{width:20px;height:20px}
+.fc-learn{background:color-mix(in srgb,#C2571A 8%,var(--surface));border-color:color-mix(in srgb,#C2571A 45%,transparent);color:#C2571A;border-bottom-width:4px}
+.fc-know{background:var(--ok-soft);border-color:color-mix(in srgb,var(--accent) 45%,transparent);color:var(--accent);border-bottom-width:4px}
+.fc-learn:hover:not([disabled]){border-color:#C2571A}.fc-know:hover:not([disabled]){border-color:var(--accent)}
+.fc-opts{justify-content:space-between}
+/* match */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr));gap:12px}
+@media (max-width:520px){.mgrid{grid-template-columns:1fr 1fr;gap:8px}}
+.mtile{min-height:108px;padding:14px;border-radius:14px;border:2px solid var(--line-strong);border-bottom-width:4px;background:var(--surface);text-align:left;display:flex;align-items:center;font-size:14.5px;line-height:1.35;transition:transform .12s,border-color .12s,background .12s,opacity .3s,visibility .3s;min-width:0}
+.mtile.term{font-family:var(--f-display);font-weight:700;font-size:17px;background:var(--surface-2)}
+.mtile:hover:not([disabled]){border-color:var(--accent);transform:translateY(-1px)}
+.mtile.sel{border-color:var(--gilt);background:var(--gold-soft);box-shadow:0 0 0 3px color-mix(in srgb,var(--gilt) 30%,transparent)}
+.mtile.ok{border-color:var(--accent);background:var(--ok-soft)}
+.mtile.bad{border-color:var(--red);background:var(--red-soft)}
+.mtile.gone{opacity:0;visibility:hidden;transform:scale(.92)}
+@media (prefers-reduced-motion:no-preference){.mtile.bad{animation:shake .32s}.mtile.ok{animation:pop .3s}@keyframes pop{50%{transform:scale(1.05)}}}
+@media (prefers-reduced-motion:reduce){.fc-inner{transition:none}}
+.mclock b{font-size:16px;min-width:5ch;text-align:right}
+.qpill.pen{color:var(--red);border-color:color-mix(in srgb,var(--red) 40%,transparent)}
+/* Gizmo-style quiz */
+.quiz{max-width:680px;margin-inline:auto;width:100%;display:flex;flex-direction:column;gap:14px}
+.qtop{display:flex;align-items:center;gap:14px}
+.qtop .x{flex:none}
+.qtop .track{flex:1;height:14px;background:var(--line)}
+.qtop .track i{background:linear-gradient(180deg,color-mix(in srgb,var(--accent) 80%,#fff),var(--accent))}
+.hearts{display:inline-flex;align-items:center;gap:5px;color:var(--red);font-family:var(--f-mono);font-weight:600;font-size:18px}
+.hearts svg{width:24px;height:24px}
+.hearts.lose svg{animation:hb .5s}
+@keyframes hb{30%{transform:scale(.6) rotate(-12deg)}60%{transform:scale(1.25)}}
+.qmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qcount{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-right:auto}
+.qpill{display:inline-flex;align-items:center;gap:5px;padding:5px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-family:var(--f-mono);font-size:13.5px;font-variant-numeric:tabular-nums}
+.qpill svg{width:16px;height:16px}
+.qpill b{font-weight:600}
+.qpill.streak{color:#E07A1F;border-color:color-mix(in srgb,#E07A1F 40%,transparent);background:color-mix(in srgb,#E07A1F 10%,var(--surface))}
+.qpill.streak small{font-size:11.5px;opacity:.85}
+.qpill.clock.low{color:var(--red);border-color:var(--red)}
+.quiz .timer{margin-top:-8px}
+.qcard{padding-top:22px}
+.quiz .prompt{font-size:clamp(20px,3.6vw,25px)}
+.quiz .opts{grid-template-columns:1fr;gap:12px}
+.quiz .opt{align-items:center;gap:14px;padding:14px 16px;border:2px solid var(--line-strong);border-bottom-width:4px;border-radius:16px;font-size:16.5px;transition:transform .1s,border-color .12s,background .12s}
+.quiz .opt:hover:not([disabled]){transform:translateY(-1px);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 6%,var(--surface))}
+.quiz .opt:active:not([disabled]){transform:translateY(2px);border-bottom-width:2px;margin-bottom:2px}
+.ob{flex:none;width:32px;height:32px;border-radius:10px;border:2px solid var(--line-strong);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--muted);background:var(--surface-2)}
+.ot{flex:1;min-width:0;text-align:left}
+.quiz .opt.amount .ot{font-family:var(--f-mono);font-weight:600}
+.om{flex:none;width:26px;height:26px;display:grid;place-items:center}
+.om svg{width:22px;height:22px}
+.quiz .opt.ok{border-color:var(--accent);background:var(--ok-soft)}
+.quiz .opt.ok .ob{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.quiz .opt.ok .om{color:var(--accent)}
+.quiz .opt.bad{border-color:var(--red);background:var(--red-soft)}
+.quiz .opt.bad .ob{background:var(--red);border-color:var(--red);color:#fff}
+.quiz .opt.bad .om{color:var(--red)}
+.quiz .opt.dim{opacity:.5}
+.quiz .numrow input{font-size:22px;padding:15px 16px 15px 30px;border-width:2px;border-radius:14px}
+.quiz .numrow input.ok{border-color:var(--accent);background:var(--ok-soft)}
+.quiz .numrow input.bad{border-color:var(--red);background:var(--red-soft)}
+.btn.danger{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 4px 0 -1px color-mix(in srgb,var(--red) 55%,#000)}
+.btn.danger:hover{filter:brightness(1.06);border-color:var(--red)}
+.fbsheet{position:fixed;left:0;right:0;bottom:0;z-index:10;border-top:2px solid var(--accent);background:var(--ok-soft);padding-bottom:env(safe-area-inset-bottom,0px);box-shadow:0 -12px 30px -18px rgba(0,0,0,.35)}
+.fbsheet.bad{border-top-color:var(--red);background:var(--red-soft)}
+.fb-in{max-width:680px;margin:0 auto;padding:18px 16px 20px;display:flex;flex-direction:column;gap:12px;max-height:70vh;overflow:auto}
+.fb-head{display:flex;align-items:center;gap:12px}
+.fb-icon{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink)}
+.fbsheet.bad .fb-icon{background:var(--red);color:#fff}
+.fb-icon svg{width:24px;height:24px}
+.fb-t{display:flex;flex-direction:column;min-width:0}
+.fb-t strong{font-family:var(--f-display);font-weight:800;font-size:24px;line-height:1.1;color:var(--accent)}
+.fbsheet.bad .fb-t strong{color:var(--red)}
+.fb-t span{font-size:14px;color:var(--muted);font-family:var(--f-mono)}
+.fb-ans{margin:0;display:flex;flex-direction:column;gap:2px}
+.fb-ans span{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-family:var(--f-mono);color:var(--muted)}
+.fb-ans b{font-size:17px}
+.fb-why{margin:0;font-size:15.5px;background:var(--surface);border-radius:12px;padding:12px 14px;border:1px solid var(--line)}
+.fb-actions{display:flex;gap:10px;flex-wrap:wrap}
+.fb-actions .btn.big{flex:1 1 200px}
+.fb-explain{flex:0 0 auto;background:var(--surface)}
+@media (prefers-reduced-motion:no-preference){.fbsheet{animation:up .28s cubic-bezier(.2,.9,.3,1.1)}@keyframes up{from{transform:translateY(100%)}to{transform:none}}}
+@media (prefers-reduced-motion:no-preference){
+  .stamp{animation:thunk .3s cubic-bezier(.2,1.6,.4,1)}
+  @keyframes thunk{from{transform:rotate(-7deg) scale(1.9);opacity:0}to{transform:rotate(-7deg) scale(1);opacity:.92}}
+  .shake{animation:shake .32s}
+  @keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+  .enter{animation:enter .35s ease both}
+  @keyframes enter{from{transform:translateY(8px);opacity:.0}to{transform:none;opacity:1}}
+}
+</style>
+</head>
+<body>
+<header class="cover"><div class="cover-in" id="bar"></div></header>
+<main class="wrap" id="app"></main>
+
+<script>
+(function(){
+/* ================= Chapter 13 content ================= */
+const TOPICS = [
+  {id:"basics",   name:"Liability basics",                      note:"Definition, current vs. noncurrent, accounts payable"},
+  {id:"notes",    name:"Notes payable",                         note:"Interest-bearing and zero-interest-bearing notes"},
+  {id:"loans",    name:"Credit lines, loans, commercial paper", note:"Committed vs. noncommitted, secured vs. unsecured"},
+  {id:"payroll",  name:"Accrued & employee liabilities",        note:"Wages, FICA, compensated absences, sick pay, bonuses"},
+  {id:"advance",  name:"Advance collections & dividends",       note:"Deposits, unearned revenue, gift cards, sales tax"},
+  {id:"classify", name:"Maturities, refinancing, callable debt",note:"When long-term debt turns current, and when it doesn't"},
+  {id:"contingent",name:"Contingencies & warranties",           note:"Accrue vs. disclose, warranties, litigation"}
+];
+const SETS = {cls:["Current","Noncurrent","Not a liability"],cont:["Accrue","Disclose only","Neither"],absent:["Must accrue","Company may choose","Usually not accrued"]};
+const SET_Q = {cls:"Where does it go on the balance sheet?",cont:"How is it reported?",absent:"Accrue a liability?"};
+const C = [];
+const mc  = (id,t,prompt,opts,why)=>C.push({id,t,type:"mc",prompt,opts,ans:opts[0],why});
+const srt = (id,t,set,item,ans,why)=>C.push({id,t,type:"sort",set,item,opts:SETS[set],ans,why});
+const num = (id,t,prompt,ans,why)=>C.push({id,t,type:"num",prompt,ans,why});
+const je  = (id,t,scenario,date,lines,blank,opts,why,hide)=>{const [i,f]=blank;const ans=f==="acct"?lines[i][0]:(f==="dr"?lines[i][1]:lines[i][2]);C.push({id,t,type:"je",scenario,date,lines,blank,opts,ans,why,hide:hide||[]})};
+
+/* Liability basics */
+mc("b1","basics","Which is NOT one of the three essential characteristics of a liability?",
+ ["The exact payee and due date must be known","It is a probable future sacrifice of economic resources","It arises from a present obligation to transfer assets or provide services","It results from a past transaction or event"],
+ "A liability is (1) a probable future sacrifice, an unavoidable obligation, (2) a present obligation settled with cash, assets or services, and (3) the result of a past transaction. The payee and date don't have to be known.");
+mc("b2","basics","A current liability is expected to use current assets and is payable within…",
+ ["1 year or the operating cycle, whichever is longer","1 year or the operating cycle, whichever is shorter","Exactly 12 months, always","90 days"],
+ "Current = requires current assets AND is payable within 1 year or the operating cycle, whichever is longer.");
+mc("b3","basics","Current liabilities are reported on the balance sheet at…",
+ ["Their maturity amount","Present value","Fair value at year-end","Original cost less amortization"],
+ "Technically they should be at present value, but they're so short-term that the difference is immaterial.");
+mc("b4","basics","Why would a business rather have a liability classified as noncurrent?",
+ ["It improves liquidity ratios like working capital and the current ratio","Noncurrent liabilities carry no interest","Noncurrent liabilities stay off the balance sheet","Auditors don't review noncurrent liabilities"],
+ "Current liabilities come due sooner and add risk. Noncurrent classification improves working capital and the current ratio, which loan contracts often restrict.");
+mc("b5","basics","What is the only formal document involved in an account payable?",
+ ["The invoice from the creditor","A signed promissory note","A board resolution","A bank confirmation"],
+ "The invoice states the due date and the exact amount needed to settle. Accounts payable are usually due in 30–60 days.");
+mc("b6","basics","Accounts payable arise because of…",
+ ["The time lag between receiving goods or services and paying for them","A written promise to pay on a specified future date","Collecting cash from customers before delivering","A board declaring a dividend"],
+ "Accounts payable are balances owed for goods, supplies or services bought on open account. A written promise to pay is a note payable.");
+srt("b7","basics","cls","Accounts payable due in 45 days","Current","Trade payables are due within 30–60 days, so they're current.");
+srt("b8","basics","cls","Unearned revenue for a service to be performed next quarter","Current","Unearned (deferred) revenue is a current liability: you owe a product or service soon.");
+srt("b9","basics","cls","A declared cash dividend payable next month","Current","Declared cash dividends are always paid within a year of declaration, so they're current.");
+srt("b10","basics","cls","Undeclared dividends in arrears on cumulative preferred stock","Not a liability","They're not an obligation until the board declares them. Disclose in a note or parenthetically in the stock section.");
+srt("b11","basics","cls","A declared stock dividend","Not a liability","Stock dividends require no future outlay of assets or services, so they're not a liability.");
+
+/* Notes payable */
+const LAND = "Castle National Bank lends Landscape Co. $100,000 on March 1. Landscape signs a $100,000, 6%, 4-month note and prepares statements semiannually.";
+mc("n1","notes","Notes payable are best described as…",
+ ["Written promises to pay a certain sum on a specified future date","Balances owed on open account to suppliers","Expenses incurred but not yet paid","Cash collected from customers in advance"],
+ "Notes can come from purchases, financing or bank loans, and can be short- or long-term depending on the due date.");
+je("n2","notes",LAND,"Mar 1",[["Cash","100,000",""],["Notes Payable","","100,000"]],[1,"acct"],
+ ["Notes Payable","Interest Payable","Discount on Notes Payable","Accounts Payable"],
+ "Issuing an interest-bearing note: debit Cash, credit Notes Payable for the face amount.");
+je("n3","notes",LAND,"Jun 30",[["Interest Expense","2,000",""],["Interest Payable","","2,000"]],[1,"acct"],
+ ["Interest Payable","Notes Payable","Interest Revenue","Cash"],
+ "Interest owed but not yet paid is accrued: debit Interest Expense, credit Interest Payable ($100,000 × 6% × 4/12 = $2,000).");
+je("n4","notes",LAND,"Jul 1",[["Notes Payable","100,000",""],["Interest Payable","2,000",""],["Cash","","102,000"]],[1,"dr"],
+ ["2,000","6,000","8,000","500"],
+ "Interest Payable clears the 4 months accrued on June 30: $100,000 × 6% × 4/12 = $2,000. Cash = $100,000 + $2,000 = $102,000.",[[2,"cr"]]);
+num("n5","notes","A $100,000, 6%, 4-month note is issued March 1. How much interest accrues by June 30?",2000,
+ "$100,000 × 6% × 4/12 = $2,000.");
+mc("n6","notes","On a zero-interest-bearing note, the borrower receives…",
+ ["The present value of the note, which is less than the face amount","The full face amount, with no interest ever charged","The face amount plus interest up front","Nothing until maturity"],
+ "Interest is still charged; it just isn't stated on the note. The bank takes its fee up front and the borrower repays the full face amount.");
+mc("n7","notes","Discount on Notes Payable is…",
+ ["A contra account subtracted from Notes Payable","An expense account","An asset account","A revenue account"],
+ "Notes Payable is credited for face value; the difference from cash received is debited to Discount on Notes Payable, a contra liability.");
+const AFF = "On May 1, Affiliated Technologies borrows from First BancCorp by issuing a 6-month, $700,000 noninterest-bearing note with a 12% discount rate.";
+je("n8","notes",AFF,"May 1",[["Cash","658,000",""],["Discount on Notes Payable","42,000",""],["Notes Payable","","700,000"]],[1,"dr"],
+ ["42,000","84,000","7,000","3,500"],
+ "$700,000 × 12% × 6/12 = $42,000. Cash received = $700,000 − $42,000 = $658,000.",[[0,"dr"]]);
+je("n9","notes",AFF,"Nov 1",[["Interest Expense","42,000",""],["Discount on Notes Payable","","42,000"],["Notes Payable","700,000",""],["Cash","","700,000"]],[1,"acct"],
+ ["Discount on Notes Payable","Interest Payable","Cash","Notes Payable"],
+ "At maturity the discount becomes interest expense, and the full $700,000 face value is repaid.");
+const LZ = "On March 1, Landscape signs a $102,000, 4-month, zero-interest-bearing note. Its present value is $100,000.";
+je("n10","notes",LZ,"Mar 1",[["Cash","100,000",""],["Discount on Notes Payable","2,000",""],["Notes Payable","","102,000"]],[1,"acct"],
+ ["Discount on Notes Payable","Interest Expense","Prepaid Interest","Interest Payable"],
+ "Notes Payable is credited for the face value, which is more than the cash received. The $2,000 gap goes to Discount on Notes Payable.");
+num("n11","notes",LZ+" What net amount appears under current liabilities on March 1?",100000,
+ "Notes Payable $102,000 less Discount on Notes Payable $2,000 = $100,000.");
+
+/* Loans */
+mc("l1","loans","A line of credit where the borrower pays a fee to keep it available is…",
+ ["Committed","Noncommitted","Unsecured","Commercial paper"],
+ "A committed line is a formal agreement that usually requires a commitment fee.");
+mc("l2","loans","A noncommitted line of credit is…",
+ ["An informal agreement to borrow up to a preset limit without formal loan paperwork","A formal agreement that requires a commitment fee","A loan secured by inventory","A certificate sold in $25,000 denominations"],
+ "Noncommitted = informal, no fee, no formal loan procedures each time you borrow.");
+mc("l3","loans","Assets pledged as collateral for a secured loan are usually…",
+ ["Accounts receivable or inventory","Goodwill or patents","Treasury stock","Prepaid expenses"],
+ "The lender can seize the collateral, usually receivables or inventory, if the borrower defaults.");
+mc("l4","loans","Which tends to carry the lower interest rate?",
+ ["A secured loan","An unsecured (signature) loan","They're always equal","It depends only on the loan's length"],
+ "Collateral lowers the lender's risk. An unsecured loan rests only on the borrower's creditworthiness.");
+mc("l5","loans","Which statement about commercial paper is FALSE?",
+ ["It is secured by the issuer's inventory","Large corporations sell it to raise money","Maturities run 30 to 270 days","Interest is usually discounted at issuance"],
+ "Commercial paper is unsecured, short-term (30–270 days) and sold in $25,000 denominations.");
+mc("l6","loans","Commercial paper is typically sold in denominations of…",
+ ["$25,000","$1,000","$100,000","$1 million"],"Sold in $25,000 denominations by large corporations.");
+
+/* Payroll & accrued */
+mc("p1","payroll","An accrued liability arises when a business…",
+ ["Incurs an expense but hasn't paid cash yet","Collects cash before earning revenue","Pays cash before incurring an expense","Signs a note to borrow money"],
+ "Accrued expenses create liabilities like interest payable and salaries and wages payable.");
+je("p2","payroll","Company Y pays its one employee $100 a day, every two weeks. At November 30 the employee has worked 2 days since the last payday.","Nov 30",
+ [["Salaries and Wages Expense","200",""],["Salaries and Wages Payable","","200"]],[1,"acct"],
+ ["Salaries and Wages Payable","Cash","Accrued Revenue","Prepaid Salaries"],"Wages earned but unpaid are a liability: Salaries and Wages Payable ($100 × 2 days = $200).");
+num("p2n","payroll","Company Y pays its employee $100 a day, every two weeks. At November 30 the employee has worked 2 days since the last payday. How much salary expense is accrued?",200,
+ "$100 × 2 unpaid days = $200.");
+je("p3","payroll","On Dec 10 Company Y pays its $100-a-day employee for 10 days of work. 2 of those days (in November) were accrued on Nov 30.","Dec 10",
+ [["Salaries and Wages Payable","200",""],["Salaries and Wages Expense","800",""],["Cash","","1,000"]],[1,"dr"],
+ ["800","1,000","200","600"],"Only the 8 December days are new expense: $100 × 8 = $800. The 2 November days ($200) clear the payable, and Cash is $1,000.",[[0,"dr"],[2,"cr"]]);
+mc("p4","payroll","FICA tax is made up of…",
+ ["Social Security tax and Medicare tax","Federal and state unemployment tax","Income tax withholding and sales tax","Medicare tax and union dues"],
+ "FICA funds Social Security and Medicare.");
+mc("p5","payroll","Who pays Social Security and Medicare tax?",
+ ["Both employer and employee, at the same rate","Only the employee","Only the employer","The employee pays Social Security; the employer pays Medicare"],
+ "Social Security: 6.2% each, up to the annual limit. Medicare: 1.45% each, on all compensation.");
+num("p6","payroll","An employee earns $200,000 in 2025. Social Security tax is 6.2% on pay up to $184,500. How much Social Security tax is withheld from the employee?",11439,
+ "$184,500 × 6.2% = $11,439. Pay above the annual limit isn't subject to Social Security tax.");
+num("p7","payroll","Same employee, $200,000 of 2025 pay. Medicare tax is 1.45% of total compensation. How much Medicare tax does the employee owe?",2900,
+ "Medicare has no cap: $200,000 × 1.45% = $2,900. The employer pays a matching amount.");
+mc("p8","payroll","Payroll deductions withheld but not yet sent to the authorities are…",
+ ["Current liabilities","Expenses of the employer","Noncurrent liabilities","Contra assets"],
+ "Taxes, insurance premiums, employee savings and union dues withheld but not yet remitted are current liabilities.");
+mc("p9","payroll","Which is NOT one of the four conditions for accruing compensated absences?",
+ ["The employee has given notice of resignation","The obligation relates to services already rendered","The rights vest or accumulate","Payment is probable and the amount can be reasonably estimated"],
+ "All four: services already rendered, rights vest or accumulate, payment probable, amount reasonably estimable.");
+mc("p10","payroll","An employer meets every condition for accruing vacation pay except that the amount can't be reasonably estimated. It should…",
+ ["Disclose that fact in the notes","Accrue an estimate anyway","Do nothing","Record a contra asset"],
+ "Conditions (a), (b) and (c) met but not (d): no accrual, but disclose in the notes.");
+mc("p11","payroll","When a benefit \"vests,\" the employee…",
+ ["Gets paid for it even if terminated","Can carry unused days into next year","Must use the days within the year","Has worked there at least 5 years"],
+ "Vesting = compensated even if terminated. Accumulating = carries over to later periods.");
+mc("p12","payroll","Which wage rate do companies generally use to accrue compensated absences?",
+ ["The current wage rate","The estimated future rate, which GAAP requires","The minimum wage","An industry average rate"],
+ "GAAP doesn't specify a rate, but companies generally use the current rate. A later raise becomes extra expense when paid.");
+const AMU = "Amutron Inc. has 10 employees paid $480 per week. Each earned 2 weeks of vacation in 20X3 and took none.";
+je("p13","payroll",AMU,"Dec 31, 20X3",[["Salaries and Wages Expense","9,600",""],["Salaries and Wages Payable","","9,600"]],[1,"acct"],
+ ["Salaries and Wages Payable","Cash","Vacation Revenue","Prepaid Salaries"],"Earned but unused vacation is accrued as a liability: Salaries and Wages Payable.");
+num("p13n","payroll",AMU+" How much vacation pay does Amutron accrue on Dec 31, 20X3?",9600,"$480 × 10 employees × 2 weeks = $9,600.");
+je("p14","payroll","In 20X4 Amutron's 10 employees take their 2 weeks of vacation, but pay is now $540 per week. $9,600 was accrued at the 20X3 rate.","20X4",
+ [["Salaries and Wages Payable","9,600",""],["Salaries and Wages Expense","1,200",""],["Cash","","10,800"]],[1,"dr"],
+ ["1,200","10,800","600","0"],"Cash paid is $540 × 10 × 2 = $10,800. The $1,200 above the $9,600 accrual is additional expense in 20X4.",[[2,"cr"]]);
+num("p15","payroll","If Amutron had accrued 20X3 vacation at the future $540 rate (10 employees × 2 weeks), how much Salaries and Wages Expense would it debit in 20X4 when the vacation is paid?",0,
+ "Accrual = $540 × 2 × 10 = $10,800, exactly the cash paid. The 20X4 entry is just Dr Payable / Cr Cash, so no expense.");
+srt("p16","payroll","absent","Sick pay that vests","Must accrue","If sick pay benefits vest, a company must accrue them.");
+srt("p17","payroll","absent","Sick pay that accumulates but doesn't vest, paid only if illness causes the absence","Company may choose","Payment depends on future illness, so the company may or may not accrue it.");
+srt("p18","payroll","absent","Unused sick days employees can take off even when they aren't ill","Must accrue","The company will pay regardless of future illness, so it must accrue.");
+srt("p19","payroll","absent","Jury duty leave","Usually not accrued","Holidays, military, maternity and jury leave don't accumulate if unused, so they usually aren't accrued.");
+srt("p20","payroll","absent","Holidays that can't be carried forward","Usually not accrued","Holidays are accrued only if employees work them and can carry them forward for probable future pay.");
+je("p21","payroll","Palmer Inc. reports 20X3 income of $100,000 and will pay $10,700 of bonuses in January 20X4.","Dec 31, 20X3",
+ [["Salaries and Wages Expense","10,700",""],["Salaries and Wages Payable","","10,700"]],[0,"acct"],
+ ["Salaries and Wages Expense","Retained Earnings","Dividends","Bonus Revenue"],
+ "Bonuses are additional wages: an expense that reduces net income, accrued at year-end.");
+
+/* Advance collections & dividends */
+mc("a1","advance","A refundable deposit is…",
+ ["Cash collected from a customer that will be returned later","Revenue earned when received","A prepaid expense","A gain contingency"],
+ "A common example is a deposit for renting a space. Until refunded, it's a liability.");
+mc("a2","advance","Receiving cash from a customer before earning it creates…",
+ ["Unearned (deferred) revenue","Accounts receivable","Accrued revenue","Retained earnings"],
+ "The company owes the customer a product or service.");
+mc("a3","advance","Unearned revenue is reduced when the business…",
+ ["Earns the revenue, or can't deliver and refunds the customer","Receives more cash from customers","Pays its suppliers","Declares a dividend"],
+ "Either the revenue is recognized, or the goods or services can't be delivered.");
+mc("a4","advance","Gift card revenue is recognized upon…",
+ ["Redemption or breakage","Sale of the card","The end of the fiscal year","Customer registration"],
+ "Redemption = card used. Breakage = redemption is viewed as remote, based on experience or expiration.");
+const GB = "During May, Great Buy sold $2 million of gift cards. Customers redeemed $1.5 million of cards, and $1 million of older cards expired unused.";
+je("a5","advance",GB,"May",[["Cash","2,000,000",""],["Deferred Revenue","","2,000,000"]],[1,"acct"],
+ ["Deferred Revenue","Sales Revenue","Accounts Receivable","Gain on Gift Cards"],
+ "Selling a gift card is a cash advance: the company owes merchandise, so it's deferred revenue.");
+je("a6","advance",GB,"May",[["Deferred Revenue","2,500,000",""],["Sales Revenue","","2,500,000"]],[0,"acct"],
+ ["Deferred Revenue","Cash","Gift Card Expense","Accounts Receivable"],
+ "Redeeming or expiring cards moves the balance out of Deferred Revenue into Sales Revenue.");
+num("a6n","advance",GB+" How much gift card revenue does Great Buy recognize in May?",2500000,
+ "Revenue is recognized for both redeemed ($1.5M) and expired, i.e. breakage ($1M), cards: $2.5M. The $2M sold is still deferred.");
+je("a7","advance","Acme, Inc. sells inventory for $1,000. The sales tax rate is 8%.","",
+ [["Cash or Accounts Receivable","1,080",""],["Sales","","1,000"],["Sales Taxes Payable","","80"]],[2,"cr"],
+ ["80","1,080","8","800"],
+ "$1,000 × 8% = $80, a liability owed to the state, not revenue. Cash = $1,000 + $80 = $1,080.",[[0,"dr"]]);
+je("a8","advance","Acme pays the tax authorities all the sales tax it has collected.","",
+ [["Sales Taxes Payable","XXX",""],["Cash","","XXX"]],[0,"acct"],
+ ["Sales Taxes Payable","Sales Tax Expense","Sales","Accounts Receivable"],
+ "Remitting collected tax clears the liability. It was never Acme's expense.");
+mc("a9","advance","Which is NOT a collection for a third party?",
+ ["Unearned revenue from a customer prepayment","Income tax withheld from employees","Sales tax collected from customers","Employee contributions to retirement plans"],
+ "Withholdings, Social Security, employee insurance, retirement contributions and sales tax are collected for someone else. Unearned revenue is owed to the customer.");
+mc("a10","advance","Why are declared cash dividends classified as current liabilities?",
+ ["Companies always pay cash dividends within one year of declaration","Stockholders can demand payment at any time","They're secured by company assets","All equity items are current"],
+ "At declaration, stockholders become creditors for the declared amount.");
+mc("a11","advance","Accumulated but undeclared dividends on cumulative preferred stock are…",
+ ["Disclosed in a note or parenthetically, not recorded","Recorded as a current liability","Recorded as a noncurrent liability","Ignored entirely"],
+ "Dividends in arrears aren't an obligation until the board authorizes payment.");
+
+/* Maturities, refinancing, callable */
+mc("r1","classify","A 10-year bond with no refinancing plan is reported as a current liability…",
+ ["During its 10th year only","For all 10 years","Never","During its first year"],
+ "Noncurrent for 9 years, current in the year it comes due.");
+mc("r2","classify","Which does NOT let a company keep maturing long-term debt out of current liabilities?",
+ ["Management hopes to have the cash by the due date","A noncurrent fund was set aside to retire it","It will be refinanced with proceeds from new debt","It will be converted into common or preferred stock"],
+ "The three exceptions: a noncurrent retirement fund, refinancing with new debt, or conversion to stock. Disclose the plan in a note.");
+mc("r3","classify","To report a short-term obligation as noncurrent because it will be refinanced, the company needs…",
+ ["Intent to refinance AND demonstrated ability to do so","Intent to refinance only","A strong credit rating","Board approval only"],
+ "Both conditions: intent (no working capital needed next year) and demonstrated ability.");
+mc("r4","classify","Which demonstrates the ability to refinance?",
+ ["Issuing long-term debt after the balance sheet date but before the statements are issued","Issuing long-term debt after the statements are issued","A verbal promise from a bank officer","Management's written intent"],
+ "Ability = an existing refinancing agreement, or an actual refinancing between the balance sheet date and issuance.");
+const BRAHM = "Brahm Bros. has $12 million of notes maturing May 2028 and intends to refinance them long-term. Before issuing its 2027 statements, it negotiates a line of credit allowing up to $7 million of 2-year borrowings.";
+num("r5","classify",BRAHM+" How much of the notes is reported as current at Dec 31, 2027?",5000000,
+ "Only $7M is backed by the refinancing agreement, so $12M − $7M = $5M stays current.");
+mc("r6","classify","Brahm Bros. also had $4 million of bonds maturing Feb 2028. On Feb 7, before issuing its statements, it sold $4 million of 20-year bonds and used the cash to repay them. How are the maturing bonds reported at Dec 31, 2027?",
+ ["Long-term liability, $4 million","Current liability, $4 million","$2M current, $2M long-term","Not reported"],
+ "An actual refinancing before issuance proves ability. The excluded amount can't exceed the new proceeds ($4M).");
+mc("r7","classify","A 10-year bond is replaced at maturity by another 10-year bond sold specifically to refund it. In substance this is…",
+ ["A single 20-year long-term liability","Long-term, then current, then long-term again","Two separate current liabilities","An equity transaction"],
+ "It's one continuous long-term liability.");
+mc("r8","classify","Debt the creditor can call (demand) within the next year is classified as…",
+ ["Current, even if it isn't expected to be called","Noncurrent unless it's actually called","Current only if the company expects a call","Equity"],
+ "Callable within the year or operating cycle = current, regardless of expectations.");
+mc("r9","classify","A covenant violation makes long-term debt callable unless fixed within a grace period. The debt can stay noncurrent if…",
+ ["It's probable the violation will be cured in the grace period, or the creditor waives it","Management believes the creditor won't call it","The debt has more than 5 years left","The violation is disclosed in a note"],
+ "Example: working capital falls below the minimum in the debt agreement.");
+srt("r10","classify","cls","Long-term debt callable next year because of a covenant violation that probably won't be cured","Current","Callable within the year and the violation likely won't be fixed, so it's current.");
+srt("r11","classify","cls","A short-term note with intent to refinance and an existing long-term refinancing agreement","Noncurrent","Intent + demonstrated ability (an agreement) lets it be reported as noncurrent.");
+srt("r12","classify","cls","A bond due next year that will be retired from a sinking fund classified as noncurrent","Noncurrent","A noncurrent fund set aside to retire the debt is one of the three exceptions.");
+srt("r13","classify","cls","The final year of a 10-year bond, with no refinancing plan","Current","It comes due within the year, so it's reclassified to current.");
+
+/* Contingencies */
+mc("c1","contingent","A contingency is…",
+ ["An existing condition with uncertain gain or loss that will be resolved by future events","Any liability with an unknown payee","A loss that has already been paid","Any liability due after one year"],
+ "It's resolved when one or more future events occur or fail to occur.");
+mc("c2","contingent","Gain contingencies are…",
+ ["Never accrued; disclosed only if material and highly probable","Accrued when probable","Accrued when reasonably possible","Recorded as deferred revenue"],
+ "Conservatism: gains aren't accrued. Examples are possible tax refunds and court cases likely to go your way.");
+mc("c3","contingent","\"Reasonably possible\" means the chance of the future event is…",
+ ["More than remote but less than likely","Likely to occur","Slight","Certain"],
+ "Probable = likely. Reasonably possible = in between. Remote = slight.");
+mc("c4","contingent","Which two conditions must BOTH be met to accrue a loss contingency?",
+ ["Probable liability at the statement date, and amount known or reasonably estimable","Reasonably possible, and the payee is known","Probable, and the exact due date is known","Material, and a lawsuit has been filed"],
+ "The company doesn't need to know the exact payee or date.");
+srt("c5","contingent","cont","A loss is probable and the amount can be reasonably estimated","Accrue","Probable + estimable = accrue it.");
+srt("c6","contingent","cont","A loss is probable but the amount can't be reasonably estimated","Disclose only","Can't estimate, so no accrual, but disclose in the notes.");
+srt("c7","contingent","cont","A loss is reasonably possible and the amount is estimable","Disclose only","Reasonably possible losses are disclosed, not accrued.");
+srt("c8","contingent","cont","A loss is remote","Neither","Remote losses are generally neither accrued nor disclosed.");
+srt("c9","contingent","cont","The general risk of a recession or a strike","Neither","General business risks (war, strikes, recession) aren't recorded or disclosed.");
+srt("c10","contingent","cont","A material tax refund the company is highly likely to win","Disclose only","It's a gain contingency: never accrued, only disclosed if material and highly probable.");
+je("c11","contingent","Estimating uncollectible receivables is a loss contingency recorded against a contra asset.","",
+ [["Bad Debt Expense","XXX",""],["Allowance for Doubtful Accounts","","XXX"]],[1,"acct"],
+ ["Allowance for Doubtful Accounts","Accounts Receivable","Estimated Bad Debt Liability","Cash"],
+ "Debit a loss or expense; credit a contra asset (sometimes) or a liability (usually).");
+const CAL = "Caldor Health sells $2 million of therapeutic chairs in December 2027 with a 2-year warranty. Costs are estimated at 3% of sales in year one and 4% in year two.";
+je("c12","contingent",CAL,"Dec 31, 2027",[["Warranty Expense","140,000",""],["Estimated Warranty Liability","","140,000"]],[1,"acct"],
+ ["Estimated Warranty Liability","Warranty Revenue","Deferred Revenue","Accounts Payable"],"Probable, estimable warranty costs are accrued: debit Warranty Expense, credit Estimated Warranty Liability.");
+num("c12n","contingent",CAL+" How much warranty expense is recorded at Dec 31, 2027?",140000,"(3% + 4%) × $2,000,000 = $140,000, expensed in the period of sale.");
+je("c13","contingent","In 2028 Caldor spends $61,000 satisfying warranty claims.","2028",
+ [["Estimated Warranty Liability","61,000",""],["Cash (or Inventory, Wages Payable…)","","61,000"]],[0,"acct"],
+ ["Estimated Warranty Liability","Warranty Expense","Sales Returns","Deferred Revenue"],
+ "The expense was recorded at the sale. Actual claims just reduce the liability.");
+mc("c14","contingent","Revenue from a separately sold extended warranty is…",
+ ["Deferred and recognized straight-line over the contract","Recognized in full at the sale","Recognized when a claim is made","Never recognized"],
+ "The seller still owes service over the contract's life.");
+je("c15","contingent","Brand Name Appliances sold a $60, 3-year extended warranty covering 2028, 2029 and 2030.","Dec 31, 2028",
+ [["Deferred Revenue—Extended Warranties","20",""],["Revenue—Extended Warranties","","20"]],[0,"acct"],
+ ["Deferred Revenue—Extended Warranties","Warranty Expense","Estimated Warranty Liability","Cash"],"Each year a third of the deferred revenue is earned: debit Deferred Revenue—Extended Warranties, credit Revenue ($60 ÷ 3 = $20).");
+num("c15n","contingent","Brand Name Appliances sold a $60, 3-year extended warranty covering 2028–2030. How much revenue does it recognize each year?",20,"$60 ÷ 3 years = $20, straight-line.");
+je("c16","contingent","Hanlin Auto sells a $20,000 car plus a $600 extended warranty that covers years 4–6.","Sale",
+ [["Cash","20,600",""],["Sales","","20,000"],["Unearned Warranty Revenue","","600"]],[2,"acct"],
+ ["Unearned Warranty Revenue","Warranty Revenue","Estimated Warranty Liability","Sales"],
+ "The car and the extended warranty are recognized separately; the warranty is deferred.");
+num("c17","contingent","Hanlin's $600 extended warranty covers years 4 through 6. How much warranty revenue does it recognize at the end of year 4?",200,
+ "$600 ÷ 3 = $200 per year: Dr Unearned Warranty Revenue, Cr Warranty Revenue.");
+mc("c18","contingent","In practice, a loss from pending litigation is usually…",
+ ["Disclosed in the notes rather than accrued","Accrued as soon as the suit is filed","Ignored until paid","Recorded as a contra asset"],
+ "Companies rarely accrue until a settlement is reached or nearly complete.");
+mc("c19","contingent","A lawsuit filed in February 2028 concerns an accident in November 2027. Can the loss be accrued in the 2027 statements?",
+ ["Yes, if probable and estimable, because the cause occurred before year-end","No, because the suit wasn't filed during 2027","Only if it settles before year-end","No, lawsuits are never accrued"],
+ "The cause must occur before the period ends; the suit itself can be filed later.");
+mc("c20","contingent","A material event occurs after year-end but before the statements are issued. The company should…",
+ ["Disclose it in the notes","Ignore it until next year","Restate the prior year","Accrue it automatically"],
+ "If it materially affects financial position, it must be disclosed.");
+mc("c21","contingent","Merck being sued and Ford offering car warranties are both examples of…",
+ ["Loss contingencies","Gain contingencies","Accrued expenses","Callable obligations"],
+ "Payments depend on future outcomes: a court ruling, or how many cars need repairs.");
+mc("c22","contingent","Cash rebates represent…",
+ ["A reduction in the net amount the customer pays","Additional revenue","A gain contingency","An asset retirement cost"],
+ "Rebates obligate the company to return cash later.");
+mc("c23","contingent","Premiums offered for proofs of purchase are…",
+ ["Noncash items like toys, dishes or small appliances","Cash refunds","Coupons for future discounts","Interest on customer deposits"],
+ "Customers send box tops, labels or wrappers in exchange for premiums.");
+mc("c24","contingent","To accrue a contingent loss, a company usually…",
+ ["Debits a loss or expense and credits a liability","Debits a liability and credits revenue","Debits cash and credits a loss","Only writes a note"],
+ "Sometimes the credit goes to a contra asset instead (e.g., Allowance for Doubtful Accounts).");
+
+/* ---- free-response problems ---- */
+const F = [];
+const J = rows => rows.map(([a,d,c])=>{const acct=(c&&!d?"    ":"")+a; return acct.padEnd(40," ")+(d||"").padStart(11," ")+(c||"").padStart(12," ")}).join("\n");
+const frq=(id,t,title,scenario,parts)=>F.push({id,t,title,scenario,parts});
+const P=(q,model,rubric)=>({q,model,rubric});
+
+frq("f1","notes","Interest-bearing note across a year-end",
+ "On August 1, Ridgeway Co. borrows $60,000 from Pacific Bank by signing a 9%, 5-month note. Ridgeway's fiscal year ends October 31.",
+ [P("Record the August 1 journal entry.", J([["Cash","60,000",""],["Notes Payable","","60,000"]]),
+    [[1,"Debit Cash $60,000"],[1,"Credit Notes Payable $60,000"]]),
+  P("Record the adjusting entry on October 31.", J([["Interest Expense","1,350",""],["Interest Payable","","1,350"]])+"\n\n$60,000 × 9% × 3/12 = $1,350 (Aug, Sep, Oct)",
+    [[1,"Debit Interest Expense $1,350"],[1,"Credit Interest Payable $1,350"],[1,"Uses 3 months (3/12) of the annual rate"]]),
+  P("Record the payment of the note and all interest at maturity on January 1.", J([["Notes Payable","60,000",""],["Interest Payable","1,350",""],["Interest Expense","900",""],["Cash","","62,250"]])+"\n\nNov–Dec interest: $60,000 × 9% × 2/12 = $900",
+    [[1,"Debit Notes Payable $60,000"],[1,"Debit Interest Payable $1,350 (clears the accrual)"],[1,"Debit Interest Expense $900 for November–December"],[1,"Credit Cash $62,250"]])]);
+
+frq("f2","notes","Zero-interest-bearing note",
+ "On April 1, Harbor Co. borrows from City Bank by issuing a 6-month, $84,000 noninterest-bearing note. The bank applies a 10% discount rate.",
+ [P("Record the April 1 journal entry.", J([["Cash","79,800",""],["Discount on Notes Payable","4,200",""],["Notes Payable","","84,000"]])+"\n\n$84,000 × 10% × 6/12 = $4,200",
+    [[1,"Discount computed as $4,200"],[1,"Debit Cash $79,800"],[1,"Debit Discount on Notes Payable $4,200"],[1,"Credit Notes Payable $84,000 (face value)"]]),
+  P("Show how the note appears in current liabilities on April 1.", "Current Liabilities\n  Notes Payable                       84,000\n  Less: Discount on Notes Payable     (4,200)     79,800",
+    [[1,"Notes Payable shown at $84,000 face"],[1,"Discount subtracted as a contra account"],[1,"Net carrying amount $79,800"]]),
+  P("Record the entries on October 1 when the note matures and is paid.", J([["Interest Expense","4,200",""],["Discount on Notes Payable","","4,200"],["Notes Payable","84,000",""],["Cash","","84,000"]]),
+    [[1,"Debit Interest Expense / credit Discount on Notes Payable $4,200"],[1,"Debit Notes Payable / credit Cash $84,000"]]),
+  P("Explain why a \"zero-interest\" note still produces interest expense.", "No lender lends for free. The interest isn't stated on the note; the bank takes it up front. The borrower receives only the present value ($79,800) but repays the full face value ($84,000), and that $4,200 difference is the interest.",
+    [[1,"Interest is deducted up front / built into the face amount"],[1,"Borrower receives less than face (present value) but repays face; the difference is interest"]])]);
+
+frq("f3","payroll","Accrued wages at month-end",
+ "Brightline Co. pays its one employee $150 per day, every two weeks. On March 31 (month-end) the employee has worked 3 days since the last payday. The next payday, April 7, covers 10 working days.",
+ [P("Record the March 31 adjusting entry.", J([["Salaries and Wages Expense","450",""],["Salaries and Wages Payable","","450"]])+"\n\n$150 × 3 days",
+    [[1,"Debit Salaries and Wages Expense $450"],[1,"Credit Salaries and Wages Payable $450"]]),
+  P("Record the April 7 payroll entry.", J([["Salaries and Wages Payable","450",""],["Salaries and Wages Expense","1,050",""],["Cash","","1,500"]])+"\n\nApril expense: $150 × 7 days = $1,050",
+    [[1,"Debit Salaries and Wages Payable $450"],[1,"Debit Salaries and Wages Expense $1,050 (7 April days)"],[1,"Credit Cash $1,500"]]),
+  P("Why is the March 31 accrual necessary?", "The wages were earned (an expense incurred) in March but won't be paid until April. Under accrual accounting the expense belongs in March, and the unpaid amount is a present obligation, so it's recorded as an accrued liability.",
+    [[1,"Expense was incurred in March but not yet paid"],[1,"Creates a liability / matches expense to the period"]])]);
+
+frq("f4","payroll","Compensated absences",
+ "Linden Corp. began operations January 1, 20X5. It has 8 employees, each paid $600 per week. Each employee earned 2 weeks of vacation in 20X5 and took none. In 20X6 they use the vacation, but weekly pay has risen to $650. Linden accrues at the current wage rate.",
+ [P("Record the December 31, 20X5 accrual.", J([["Salaries and Wages Expense","9,600",""],["Salaries and Wages Payable","","9,600"]])+"\n\n$600 × 8 × 2",
+    [[1,"Amount $9,600"],[1,"Debit Salaries and Wages Expense"],[1,"Credit Salaries and Wages Payable"]]),
+  P("Record the 20X6 payment of the vacation pay.", J([["Salaries and Wages Payable","9,600",""],["Salaries and Wages Expense","800",""],["Cash","","10,400"]])+"\n\nCash: $650 × 8 × 2 = $10,400",
+    [[1,"Debit Salaries and Wages Payable $9,600"],[1,"Debit Salaries and Wages Expense $800 for the raise"],[1,"Credit Cash $10,400"]]),
+  P("List the four conditions that require accruing compensated absences.", "1. The obligation relates to employee services already rendered.\n2. The rights vest or accumulate (can be taken in a later year).\n3. Payment is probable.\n4. The amount can be reasonably estimated.",
+    [[1,"Services already rendered"],[1,"Rights vest or accumulate"],[1,"Payment is probable"],[1,"Amount reasonably estimable"]]),
+  P("If Linden met every condition except being able to estimate the amount, what should it do?", "Don't accrue a liability, but disclose the fact in the notes to the financial statements.",
+    [[1,"No accrual"],[1,"Disclose in the notes"]])]);
+
+frq("f5","payroll","FICA for a high earner",
+ "Morgan earns $190,000 in 2025. Social Security tax is 6.2% on wages up to $184,500. Medicare tax is 1.45% of all wages.",
+ [P("Compute the Social Security tax withheld from Morgan.", "$184,500 × 6.2% = $11,439\n(Wages above the $184,500 limit aren't taxed.)",
+    [[1,"Applies the $184,500 limit"],[1,"Correct amount $11,439"]]),
+  P("Compute the Medicare tax withheld from Morgan.", "$190,000 × 1.45% = $2,755 (no wage limit)",
+    [[1,"Uses all $190,000 of wages"],[1,"Correct amount $2,755"]]),
+  P("How much FICA does the employer owe for Morgan, and how are withheld-but-unpaid amounts reported?", "The employer matches at the same rates: $11,439 + $2,755 = $14,194. Amounts withheld or owed but not yet remitted to the government are current liabilities.",
+    [[1,"Employer matches: $14,194"],[1,"Unremitted amounts are current liabilities"]])]);
+
+frq("f6","advance","Gift cards and sales tax",
+ "During June, Cobalt Outfitters sold $500,000 of gift cards. Customers redeemed $350,000 of cards (from June and earlier), and $40,000 of older cards expired unused. Separately, Cobalt sold merchandise for $2,500 cash where the sales tax rate is 7%.",
+ [P("Record the June gift card sales.", J([["Cash","500,000",""],["Deferred Revenue","","500,000"]]),
+    [[1,"Debit Cash $500,000"],[1,"Credit Deferred (Unearned) Revenue $500,000"]]),
+  P("Record the redemptions and expirations.", J([["Deferred Revenue","390,000",""],["Sales Revenue","","390,000"]])+"\n\n$350,000 redeemed + $40,000 breakage",
+    [[1,"Debit Deferred Revenue"],[1,"Credit Sales Revenue"],[1,"Amount includes breakage: $390,000"]]),
+  P("Record the $2,500 merchandise sale.", J([["Cash","2,675",""],["Sales","","2,500"],["Sales Taxes Payable","","175"]]),
+    [[1,"Debit Cash $2,675"],[1,"Credit Sales $2,500"],[1,"Credit Sales Taxes Payable $175"]]),
+  P("Why isn't the $175 revenue?", "Cobalt collects it on behalf of a third party, the state and local government. It owes that cash to the tax authority, so it's a liability until remitted.",
+    [[1,"Collected for a third party (government)"],[1,"It's a liability until paid"]])]);
+
+frq("f7","classify","Refinancing short-term obligations",
+ "At December 31, 2027 (fiscal year-end), Tamarack Inc. has $9 million of notes due April 2028 and $3 million of bonds due February 2028. Management intends to refinance both on a long-term basis. On February 10, 2028, Tamarack issues $2.5 million of 15-year bonds and uses the proceeds plus other cash to retire the $3 million of bonds. On March 1, before the 2027 statements are issued, it signs an agreement allowing it to borrow up to $6 million for 3 years.",
+ [P("How should the $9 million of notes be classified at December 31, 2027?", "$6 million long-term and $3 million current. The refinancing agreement demonstrates the ability to refinance only $6 million.",
+    [[1,"$6 million noncurrent"],[1,"$3 million current"],[1,"Reason: the agreement only covers $6 million"]]),
+  P("How should the $3 million of bonds be classified?", "$2.5 million long-term and $0.5 million current. An actual refinancing before issuance demonstrates ability, but the amount excluded from current liabilities can't exceed the proceeds of the new obligation ($2.5 million).",
+    [[1,"$2.5 million noncurrent"],[1,"$0.5 million current"],[1,"Excluded amount can't exceed new proceeds"]]),
+  P("State the two conditions that let a short-term obligation be reported as noncurrent.", "1. Intent to refinance on a long-term basis (it won't use working capital next year).\n2. Demonstrated ability to refinance, either an existing refinancing agreement or an actual refinancing after the balance sheet date but before the statements are issued.",
+    [[1,"Intent to refinance long-term"],[1,"Demonstrated ability"],[1,"Ability = agreement OR actual refinancing between balance sheet date and issuance"]])]);
+
+frq("f8","contingent","Contingencies at year-end",
+ "Evaluate each situation for Ardent Corp.'s December 31 financial statements. Say whether to accrue, disclose, or do neither, and give the journal entry if one is needed.",
+ [P("A customer sued in October over a defective product. Counsel says a loss is probable, and the likely settlement is $400,000.", "Accrue: probable and reasonably estimable.\n\n"+J([["Litigation Loss (or Expense)","400,000",""],["Litigation Liability","","400,000"]]),
+    [[1,"Accrue"],[1,"Reason: probable AND reasonably estimable"],[1,"Debit loss/expense, credit liability $400,000"]]),
+  P("A competitor's patent suit could reasonably possibly cost Ardent $1 million.", "Disclose in the notes only. Reasonably possible losses aren't accrued.",
+    [[1,"Disclose only"],[1,"Reasonably possible is not enough to accrue"]]),
+  P("A loss from an environmental claim is probable, but no reasonable estimate can be made.", "Disclose only. Both conditions are required to accrue, and the amount can't be estimated.",
+    [[1,"Disclose only"],[1,"Fails the reasonably-estimable condition"]]),
+  P("Ardent will very probably win a material $200,000 tax refund dispute.", "Gain contingency: never accrued (conservatism). Disclose in the notes because it's material and highly probable.",
+    [[1,"Don't accrue a gain"],[1,"Disclose if material and highly probable"]]),
+  P("A lawsuit filed in January concerns an accident that happened in December. How does timing affect the decision?", "The cause occurred before year-end, so it can be accrued for December 31 if the loss is probable and reasonably estimable. The suit doesn't need to be filed during the period. Otherwise, disclose.",
+    [[1,"Cause before year-end is what matters"],[1,"Accrue if probable and estimable; filing date doesn't matter"]])]);
+
+frq("f9","contingent","Warranties and extended warranties",
+ "Sterling Tools sells $800,000 of drills in 2027 with a 2-year warranty. Warranty costs are estimated at 2% of sales in year one and 3% in year two. In 2028 it spends $15,000 on claims. On January 1, 2028, Sterling also sells a separately priced 3-year extended warranty for $90.",
+ [P("Record the December 31, 2027 warranty adjusting entry.", J([["Warranty Expense","40,000",""],["Estimated Warranty Liability","","40,000"]])+"\n\n(2% + 3%) × $800,000",
+    [[1,"Amount $40,000"],[1,"Debit Warranty Expense"],[1,"Credit Estimated Warranty Liability"]]),
+  P("Record the 2028 warranty claims.", J([["Estimated Warranty Liability","15,000",""],["Cash (or Inventory, Wages Payable)","","15,000"]]),
+    [[1,"Debit Estimated Warranty Liability $15,000"],[1,"Credit Cash / inventory / wages, not an expense"]]),
+  P("Record the extended warranty sale and the December 31, 2028 entry.", "Jan 1, 2028\n"+J([["Cash","90",""],["Unearned Warranty Revenue","","90"]])+"\n\nDec 31, 2028\n"+J([["Unearned Warranty Revenue","30",""],["Warranty Revenue","","30"]]),
+    [[1,"Sale credits Unearned (Deferred) Warranty Revenue $90"],[1,"Year-end recognizes $30 (straight-line, $90 ÷ 3)"]]),
+  P("Why is extended-warranty revenue deferred while the regular warranty is expensed at the sale?", "The extended warranty is sold separately, so it's a separate obligation to perform service over the contract's life; revenue is earned straight-line over that period. The regular warranty is a loss contingency that's probable and estimable, so its estimated cost is accrued as an expense in the period of sale.",
+    [[1,"Extended warranty = separate service obligation earned over the contract"],[1,"Regular warranty = probable, estimable loss contingency accrued at sale"]])]);
+
+frq("f10","basics","Liability concepts",
+ "Answer each part in a few sentences.",
+ [P("State FASB's three essential characteristics of a liability.", "1. A probable future sacrifice of economic resources (an unavoidable obligation).\n2. Arises from a present obligation to transfer assets or provide services.\n3. Results from a past transaction or event.",
+    [[1,"Probable future sacrifice"],[1,"Present obligation to transfer assets or services"],[1,"Results from a past transaction"]]),
+  P("Define a current liability and say how it's measured.", "An obligation expected to require current assets and payable within one year or the operating cycle, whichever is longer. Reported at maturity amount, since the difference from present value is immaterial.",
+    [[1,"Uses current assets"],[1,"Within 1 year or operating cycle, whichever is longer"],[1,"Reported at maturity amount"]]),
+  P("Why do companies prefer noncurrent classification?", "Current liabilities come due sooner and add risk. Noncurrent classification improves liquidity ratios like working capital and the current ratio, which loan agreements often restrict.",
+    [[1,"Improves working capital / current ratio"],[1,"Loan covenants often restrict these ratios, or current debt adds risk"]]),
+  P("A covenant violation makes long-term debt callable unless fixed within a 60-day grace period. How is it classified?", "Current, because the creditor can call it within the year, unless it's probable the company will cure the violation within the grace period or the creditor waives it. Then it can stay noncurrent.",
+    [[1,"Current by default"],[1,"Noncurrent only if cure within grace period is probable or creditor waives"]])]);
+
+frq("f11","payroll","Sick pay, holidays, bonuses",
+ "Answer each part. Use complete account names in journal entries.",
+ [P("When must sick pay be accrued, and when is accrual optional?", "If sick pay vests, it must be accrued. If it accumulates but doesn't vest and is paid only when illness causes the absence, accrual is optional. If employees can take accumulated sick days even when not ill, it must be accrued.",
+    [[1,"Vesting sick pay must be accrued"],[1,"Accumulating, non-vesting, paid only if ill: optional"],[1,"Usable even when not ill: must accrue"]]),
+  P("Why aren't holidays, jury duty and maternity leave usually accrued? When could holidays be accrued?", "They don't accumulate if unused. Holidays could be accrued only if employees work a holiday and can carry it forward for probable future compensation.",
+    [[1,"They don't accumulate if unused"],[1,"Holidays: only if worked and carried forward"]]),
+  P("Fulton Inc. will pay $18,000 of 20X3 bonuses in January 20X4. Record the December 31 and January entries.", "Dec 31, 20X3\n"+J([["Salaries and Wages Expense","18,000",""],["Salaries and Wages Payable","","18,000"]])+"\n\nJan 20X4\n"+J([["Salaries and Wages Payable","18,000",""],["Cash","","18,000"]]),
+    [[1,"Dec 31: debit Salaries and Wages Expense, credit Salaries and Wages Payable $18,000"],[1,"January: debit Salaries and Wages Payable, credit Cash $18,000"],[1,"Treats bonus as additional wages (expense), not a distribution"]])]);
+
+frq("f12","loans","Financing and dividends",
+ "Answer each part briefly.",
+ [P("Compare a committed and a noncommitted line of credit.", "Committed: a formal agreement, usually with a commitment fee to keep the line available. Noncommitted: an informal agreement letting the borrower borrow up to a preset limit without formal loan procedures.",
+    [[1,"Committed = formal, commitment fee"],[1,"Noncommitted = informal, up to a preset limit"]]),
+  P("Compare secured and unsecured loans. Which usually has the lower rate?", "Secured loans require collateral (usually receivables or inventory) that the lender can seize on default. Unsecured loans rest only on creditworthiness. Secured loans usually carry lower rates.",
+    [[1,"Secured = pledged collateral (A/R or inventory)"],[1,"Unsecured = creditworthiness only"],[1,"Secured has the lower rate"]]),
+  P("Describe commercial paper.", "Unsecured, short-term (30–270 day) notes sold by large corporations, in $25,000 denominations, with interest usually discounted at issuance.",
+    [[1,"Unsecured and short-term (30–270 days)"],[1,"Large corporations; $25,000 denominations or discounted interest"]]),
+  P("How are declared cash dividends, declared stock dividends and cumulative preferred dividends in arrears reported?", "Declared cash dividends: current liability (paid within a year). Stock dividends: not a liability (no outlay of assets). Dividends in arrears: not a liability until declared; disclose in a note or parenthetically.",
+    [[1,"Cash dividends declared = current liability"],[1,"Stock dividends = not a liability"],[1,"Arrears = not a liability; disclosed"]])]);
+
+
+/* ---- key terms (flashcards + match) ---- */
+const TERMS=[];
+const term=(t,termTxt,def)=>TERMS.push({id:"t"+(TERMS.length+1),t,term:termTxt,def});
+term("basics","Liability","A probable future sacrifice of economic benefits from a present obligation, arising from a past transaction.");
+term("basics","Current liability","An obligation that uses current assets and is payable within 1 year or the operating cycle, whichever is longer.");
+term("basics","Noncurrent liability","An obligation not due within 1 year or the operating cycle; also called a long-term liability.");
+term("basics","Accounts payable","Balances owed for goods, supplies or services bought on open account, usually due in 30–60 days.");
+term("basics","Maturity amount","What current liabilities are reported at, since the difference from present value is immaterial.");
+term("notes","Notes payable","Written promises to pay a certain sum of money on a specified future date.");
+term("notes","Interest-bearing note","A note where the borrower repays face value plus interest at a stated annual rate.");
+term("notes","Zero-interest-bearing note","A note with no stated rate: the borrower receives its present value and repays the face value.");
+term("notes","Discount on Notes Payable","A contra account to Notes Payable for interest the lender takes up front.");
+term("notes","Stated rate","The annual interest rate printed on a note; scale it by months outstanding ÷ 12.");
+term("loans","Line of credit","An agreement providing short-term financing that the borrower can draw on when needed.");
+term("loans","Committed line of credit","A formal credit agreement that usually requires a commitment fee to keep it available.");
+term("loans","Noncommitted line of credit","An informal agreement to borrow up to a preset limit without formal loan paperwork.");
+term("loans","Secured loan","A loan backed by pledged collateral, usually receivables or inventory.");
+term("loans","Unsecured loan","A signature loan supported only by the borrower's creditworthiness.");
+term("loans","Commercial paper","Unsecured 30–270 day notes sold by large corporations in $25,000 denominations.");
+term("payroll","Accrued liability","An expense that has been incurred but not yet paid in cash.");
+term("payroll","Salaries and Wages Payable","Wage expense already incurred but not yet paid to employees.");
+term("payroll","FICA","Federal payroll tax funding Social Security and Medicare, paid by both employer and employee.");
+term("payroll","Social Security tax","6.2% each for employer and employee, on pay up to an annual limit.");
+term("payroll","Medicare tax","1.45% each for employer and employee, on all compensation.");
+term("payroll","Compensated absences","Paid absences from work, such as vacation and sick days.");
+term("payroll","Vested benefit","A benefit the employee is paid for even if terminated.");
+term("payroll","Accumulated benefit","An unused benefit that carries forward to later periods.");
+term("payroll","Bonus","Additional wages, often tied to profit, recorded as an expense.");
+term("advance","Refundable deposit","Cash collected from a customer that will be returned at a later date.");
+term("advance","Unearned revenue","Cash received before it is earned; also called deferred revenue.");
+term("advance","Breakage","Recognizing gift card revenue once redemption becomes remote, e.g. the card expires.");
+term("advance","Redemption","Recognizing gift card revenue when the customer uses the card.");
+term("advance","Sales Taxes Payable","Tax collected from customers on behalf of the state and local government.");
+term("advance","Dividends payable","Cash dividends declared by the board; always a current liability.");
+term("advance","Dividends in arrears","Undeclared cumulative preferred dividends: disclosed, never recorded as a liability.");
+term("classify","Current maturities of long-term debt","The portion of long-term debt due within the next year, reported as current.");
+term("classify","Refinancing exception","A short-term obligation reported as noncurrent because of intent plus demonstrated ability to refinance.");
+term("classify","Callable obligation","Debt the creditor can demand within the year; current even if not expected to be called.");
+term("classify","Grace period","Time allowed to cure a covenant violation before the debt becomes callable.");
+term("contingent","Contingency","An existing uncertain situation whose gain or loss is resolved by future events.");
+term("contingent","Gain contingency","An uncertain situation that might produce a gain; never accrued, only disclosed.");
+term("contingent","Loss contingency","An uncertain situation that might produce a loss; accrued if probable and estimable.");
+term("contingent","Probable","The future event is likely to occur.");
+term("contingent","Reasonably possible","The chance of the event is more than remote but less than likely.");
+term("contingent","Remote","The chance of the future event is slight.");
+term("contingent","Warranty","A seller's promise to make good on a product's quantity, quality or performance.");
+term("contingent","Estimated Warranty Liability","The expected cost of warranty claims, accrued in the period of sale.");
+term("contingent","Extended warranty","A separately sold warranty whose revenue is deferred and recognized straight-line.");
+term("contingent","Rebate","Cash returned to the customer later, reducing the net amount they paid.");
+term("contingent","Premium","A noncash item, like a toy or dishes, given in return for proofs of purchase.");
+
+/* ---- Learn mode: select-all-that-apply questions ---- */
+const LQ=[];
+const lq=(id,t,prompt,correct,wrong,why)=>LQ.push({id,t,prompt,correct,wrong,why});
+lq("L1","basics","Which are essential characteristics of a liability?",["It is a probable future sacrifice of economic resources","It arises from a present obligation to transfer assets or provide services","It results from a past transaction or event"],["The payee and exact due date must be known","It must bear interest","It must be payable within one year"],"FASB: a probable future sacrifice, from a present obligation, resulting from a past transaction. The payee and date don't need to be known.");
+lq("L2","basics","Which describe a current liability?",["Expected to require the use of current assets","Payable within 1 year or the operating cycle, whichever is longer","Reported at its maturity amount"],["Payable within 1 year or the operating cycle, whichever is shorter","Always reported at present value","Must be secured by collateral"],"Current liabilities use current assets, are due within 1 year or the operating cycle (whichever is longer), and are reported at maturity amount because the PV difference is immaterial.");
+lq("L3","basics","Which are examples of current liabilities?",["Accounts payable","Unearned revenues","Declared cash dividends payable","Current maturities of long-term debt"],["Declared stock dividends","Dividends in arrears on cumulative preferred stock","Prepaid insurance","Bonds payable due in 10 years"],"Stock dividends and dividends in arrears aren't liabilities at all.");
+lq("L4","basics","Why do companies prefer to classify liabilities as noncurrent?",["It improves the current ratio","It improves working capital","Loan contracts often restrict these liquidity ratios"],["Noncurrent liabilities carry no interest","Noncurrent liabilities aren't reported on the balance sheet","Noncurrent liabilities never need to be disclosed"],"Current liabilities come due sooner and hurt liquidity ratios that loan contracts often restrict.");
+lq("L5","basics","Which are true about accounts payable?",["They arise from the time lag between receiving goods or services and paying for them","They're usually due within 30–60 days","The only formal document is the creditor's invoice"],["They require a signed promissory note","They always bear interest","They're usually due within 10 days"],"A/P is owed on open account; the invoice states the due date and exact amount.");
+lq("L6","notes","Which are true about notes payable?",["They are written promises to pay a certain sum on a specified future date","They can be short-term or long-term depending on the due date","They can be interest-bearing or zero-interest-bearing"],["They are always long-term","The only document is an invoice","They never arise from bank loans"],"Notes can come from purchases, financing or cash loans, and can be either term.");
+lq("L7","notes","On a zero-interest-bearing note, which are true?",["The borrower receives the present value of the note","The borrower repays the face value at maturity","Interest is still charged, just not stated on the note"],["No interest cost is ever incurred","The borrower receives the face value up front","Discount on Notes Payable is an asset"],"The bank takes its fee up front: the borrower gets PV and repays face value.");
+lq("L8","notes","Which describe Discount on Notes Payable?",["It is a contra account to Notes Payable","It is subtracted from Notes Payable on the balance sheet","It becomes interest expense over the note's term"],["It is a revenue account","It is reported as a current asset","It increases the carrying amount of Notes Payable"],"It's the interest taken up front, written off to Interest Expense over the note's life.");
+lq("L9","notes","Landscape signs a $100,000, 6%, 4-month note on March 1. Which are correct?",["Interest accrued by June 30 is $2,000","At maturity Landscape pays $102,000 in total","The June 30 adjusting entry credits Interest Payable"],["Interest accrued by June 30 is $6,000","The March 1 entry credits Discount on Notes Payable","The June 30 adjusting entry debits Interest Payable"],"$100,000 × 6% × 4/12 = $2,000; face + interest = $102,000.");
+lq("L10","notes","Affiliated issues a 6-month, $700,000 noninterest-bearing note with a 12% discount rate. Which are correct?",["Cash received is $658,000","Discount on Notes Payable is debited for $42,000","Notes Payable is credited for $700,000"],["Cash received is $700,000","Discount on Notes Payable is $84,000","Notes Payable is credited for $658,000"],"$700,000 × 12% × 6/12 = $42,000 discount; cash = $658,000.");
+lq("L11","loans","Which are true about lines of credit?",["They provide short-term financing the borrower can draw on when needed","They can last several years","A committed line usually requires a commitment fee"],["A noncommitted line requires formal loan paperwork for each draw","They are always secured by inventory","They must be repaid in full within 30 days"],"Noncommitted lines are informal: borrow up to a preset limit without formal procedures.");
+lq("L12","loans","Which describe a secured loan?",["The borrower pledges assets as collateral","Pledged assets are usually receivables or inventory","It tends to carry a lower rate than an unsecured loan"],["It's supported only by the borrower's creditworthiness","It's also called a signature loan","The lender has no claim on specific assets if the borrower defaults"],"Unsecured (signature) loans rely only on creditworthiness.");
+lq("L13","loans","Which describe commercial paper?",["Unsecured","Maturities of 30 to 270 days","Sold in $25,000 denominations","Interest is usually discounted at issuance"],["Secured by the issuer's inventory","Sold by small businesses to banks","Maturities of 5 to 10 years"],"Commercial paper: unsecured short-term certificates sold by large corporations.");
+lq("L14","payroll","Which are accrued liabilities?",["Interest payable","Salaries and wages payable","Income taxes payable"],["Unearned revenue","Prepaid rent","Customer deposits"],"Accrued liabilities are expenses incurred but not yet paid. Unearned revenue is an advance collection.");
+lq("L15","payroll","Which are true about FICA?",["It funds Social Security and Medicare","Both the employer and the employee pay it","Social Security applies only up to an annual wage limit"],["Only the employer pays it","Medicare applies only up to an annual wage limit","It funds unemployment insurance"],"Social Security has a wage cap; Medicare applies to all compensation.");
+lq("L16","payroll","Which rates are correct?",["Social Security: 6.2% each for employer and employee","Medicare: 1.45% each for employer and employee"],["Social Security: 1.45% each","Medicare: 6.2% each","Social Security is paid only by the employee"],"Both parties pay the same rates: 6.2% (to the limit) and 1.45%.");
+lq("L17","payroll","Which conditions must ALL exist to accrue compensated absences?",["The obligation relates to services already rendered","The rights vest or accumulate","Payment is probable","The amount can be reasonably estimated"],["The employee has given notice","The absence must be taken this year","The employee works full-time"],"If the first three are met but the amount can't be estimated, disclose it in the notes.");
+lq("L18","payroll","Which sick pay MUST be accrued?",["Sick pay that vests","Accumulated sick days employees can take even when not ill"],["Non-vesting sick pay paid only when illness causes the absence","Sick pay that doesn't accumulate","Sick days that expire unused at year-end"],"Non-vesting sick pay paid only when ill is optional to accrue.");
+lq("L19","payroll","Which are usually NOT accrued as liabilities?",["Jury duty leave","Military leave","Holidays that can't be carried forward","Maternity leave"],["Vested vacation pay","Vested sick pay","Vacation days that accumulate and carry forward"],"These don't accumulate if unused, so they usually aren't accrued.");
+lq("L20","payroll","Which are true about the rate used for compensated absences?",["GAAP doesn't specify the wage rate to use","Companies generally use the current wage rate","A later raise increases compensation expense when paid"],["GAAP requires the future wage rate","A raise is ignored when the vacation is paid","The accrual is reversed when wages rise"],"The difference between the accrual and the amount paid hits expense in the year paid.");
+lq("L21","payroll","Which are true about bonuses?",["They are treated as additional wages","They are recorded as an expense that reduces net income","Year-end bonuses paid next year are accrued to Salaries and Wages Payable"],["They are a distribution of retained earnings","They are recorded only when paid","They're reported as a reduction of revenue"],"Bonuses are expenses, accrued at year-end if paid later.");
+lq("L22","advance","Which reduce unearned revenue?",["The business earns the revenue","The business can't deliver and refunds the customer"],["The customer pays more cash in advance","The company pays its suppliers","The company records more sales on account","The customer signs a note payable"],"Unearned revenue falls when it's earned or when the goods or services can't be delivered.");
+lq("L23","advance","When is gift card revenue recognized?",["When the card is redeemed","When redemption becomes remote (breakage)"],["When the card is sold","At the end of every month regardless of use","When the customer registers the card online"],"Selling a card creates deferred revenue; redemption or breakage recognizes it.");
+lq("L24","advance","Which are collections for third parties?",["Sales tax collected from customers","Income taxes withheld from employees","Employee contributions to retirement plans","Social Security taxes withheld"],["Unearned revenue from customer prepayments","Refundable rental deposits","Accounts payable to suppliers"],"These amounts are owed to the government or another party, not to the customer.");
+lq("L25","advance","Acme sells inventory for $1,000 with 8% sales tax. Which are correct?",["Sales is credited for $1,000","Sales Taxes Payable is credited for $80","Cash or Accounts Receivable is debited for $1,080"],["Sales is credited for $1,080","Sales Tax Expense is debited for $80","Cash is debited for $1,000"],"Sales tax is a liability, never revenue or expense to the seller.");
+lq("L26","advance","Which are NOT recorded as liabilities?",["Declared stock dividends","Undeclared dividends in arrears on cumulative preferred stock"],["Declared cash dividends","Sales taxes collected","Unearned revenue"],"Stock dividends need no asset outlay; arrears aren't owed until declared.");
+lq("L27","classify","Maturing long-term debt can stay out of current liabilities if…",["A noncurrent fund was set aside to retire it","It will be refinanced with proceeds from new debt","It will be converted into stock"],["Management hopes to have cash by then","The creditor is a related party","Management plans to pay it from next year's operating cash"],"Disclose the liquidation plan in a note or parenthetically.");
+lq("L28","classify","To report a short-term obligation as noncurrent, the company must…",["Intend to refinance it on a long-term basis","Demonstrate the ability to refinance"],["Have a high credit rating","Get board approval only","Report it as equity until it's refinanced"],"Both intent and demonstrated ability are required.");
+lq("L29","classify","Which demonstrate the ability to refinance?",["An existing refinancing agreement","Actually refinancing after the balance sheet date but before the statements are issued"],["Refinancing after the statements are issued","Management's written intent alone","A verbal promise from a bank officer"],"With an actual refinancing, the excluded amount can't exceed the new proceeds.");
+lq("L30","classify","Which are classified as current liabilities?",["Debt the creditor can call within the next year, even if not expected to be called","Long-term debt callable due to a covenant violation that likely won't be cured","The final year of a bond with no refinancing plan"],["A short-term note with intent and a long-term refinancing agreement","A bond to be retired from a noncurrent sinking fund","Long-term debt in year 4 of a 10-year term"],"Callable within the year = current, unless the violation is probably cured or waived.");
+lq("L31","contingent","Which are true about gain contingencies?",["They are never accrued","They're disclosed only if material and highly probable"],["They're accrued when probable","They're recorded as deferred revenue","They're recorded as a contra liability"],"Conservatism: gains aren't recorded until realized.");
+lq("L32","contingent","Which are required to accrue a loss contingency?",["It's probable a liability existed at the statement date","The amount is known or reasonably estimable"],["The exact payee is known","The exact due date is known","A lawsuit has been filed"],"Payee and date don't need to be known.");
+lq("L33","contingent","Which loss contingencies are disclosed but NOT accrued?",["Probable but not reasonably estimable","Reasonably possible"],["Probable and reasonably estimable","Remote","General risk of a recession"],"Probable + estimable = accrue. Remote and general risks = nothing.");
+lq("L34","contingent","Which are true about warranties?",["Warranty costs are usually accrued because they're probable and estimable","Warranty expense is recorded in the period of sale","Later claims reduce Estimated Warranty Liability"],["Expense is recorded when claims are paid","Claims are debited to Warranty Expense","Warranty costs are never accrued because the customers are unknown"],"The expense is recognized at the sale; claims draw down the liability.");
+lq("L35","contingent","Which are true about extended warranties?",["They're sold separately from the product","Revenue is deferred at the sale","Revenue is recognized straight-line over the contract"],["Revenue is recognized in full at the sale","They're accounted for as a loss contingency","Their cost is accrued as Estimated Warranty Liability at the sale"],"The seller owes service over the contract life, so revenue is deferred.");
+lq("L36","contingent","Which are true about litigation?",["Losses from pending litigation are rarely accrued","Pending litigation is usually disclosed in the notes","The cause must occur before period end to accrue"],["The suit must be filed before period end to accrue","Pending lawsuits are always accrued","Companies accrue the maximum possible loss on every suit"],"The suit can be filed later as long as the cause happened before year-end.");
+lq("L37","contingent","Which are neither recorded nor disclosed?",["General risk of war","General risk of a strike","General risk of a business recession"],["A probable, estimable lawsuit loss","A reasonably possible lawsuit loss","A loss that is probable but not reasonably estimable"],"General business risks aren't contingencies to report.");
+
+const HINTS={
+ f1:["Borrowing cash with a note: which asset goes up, and which liability?","Count the months from Aug 1 to Oct 31, then use face × rate × months/12.","Clear the accrued interest first, then add interest for the months since Oct 31 (Nov–Dec)."],
+ f2:["Discount = face × discount rate × 6/12. Cash is the face value minus the discount.","Show the face value, then subtract the contra account.","Two steps: turn the discount into interest expense, then pay off the face value.","Compare what the borrower received with what it repays."],
+ f3:["How many unpaid days at $150 each fall in March?","Clear the March accrual first. Only the April days are new expense.","Accrual basis: when was the expense incurred versus paid?"],
+ f4:["Weekly pay × employees × weeks earned.","Cash uses the new rate. The difference from the accrual is extra expense.","Think: past services, vest or accumulate, probable, estimable.","If you can't estimate it, can you still record it? What do you do instead?"],
+ f5:["Social Security stops at the annual wage limit. Use $184,500, not $190,000.","Medicare has no wage limit. Use all wages.","The employer matches both taxes. Until they're remitted, how are they classified?"],
+ f6:["Selling a gift card means you owe merchandise later.","Revenue comes from redeemed cards and from expired ones (breakage).","Sales tax = $2,500 × 7%. Cash includes the tax.","Who does the $175 really belong to?"],
+ f7:["The agreement only covers $6 million. What happens to the rest?","The excluded amount can't exceed the proceeds of the new debt.","One condition is about what management plans; the other is about proof."],
+ f8:["Check both: is it probable? Is it estimable?","Is reasonably possible enough to accrue?","Accrual needs both conditions. Which one fails here?","Gains are treated more conservatively than losses.","What matters is when the cause happened, not when the suit was filed."],
+ f9:["Add both years' rates, then multiply by sales.","The expense was already recorded at the sale. Which account do claims reduce?","Defer the $90 at the sale, then recognize one-third each year.","One is a separate service you sold; the other is a cost tied to the original sale."],
+ f10:["Probable future sacrifice… present obligation… past transaction.","Cover current assets, the 1-year/operating-cycle test, and the amount it's reported at.","Think about liquidity ratios and loan covenants.","Callable within the year is current, but there's an exception involving the grace period."],
+ f11:["Vest versus accumulate. Does payment depend on actually being sick?","Do these days carry over if they're unused?","Bonuses are extra wages: accrue them at year-end, then pay."],
+ f12:["One is formal with a fee; the other is informal, up to a limit.","Collateral, what's usually pledged, and which rate is lower.","Secured or not? How long? Who issues it? What denomination?","Which require an outlay of assets? Which have been declared?"]
+};
+
+const TERM_WRONG={
+"Liability": [
+"A resource the company controls that will provide future economic benefits",
+"The owners' residual interest in assets after subtracting debts",
+"A possible obligation that depends entirely on events that haven't happened yet"
+],
+"Current liability": [
+"An obligation payable within 1 year or the operating cycle, whichever is shorter",
+"An obligation due in more than one year, reported at present value",
+"Any debt the company intends to pay with new long-term borrowing"
+],
+"Noncurrent liability": [
+"An obligation due within one year that requires current assets",
+"A liability that has already been paid off but not yet removed from the books",
+"An obligation reported at maturity amount because it's due within the operating cycle"
+],
+"Accounts payable": [
+"Written promises to pay a certain sum on a specified future date",
+"Amounts customers owe the company for goods sold on credit",
+"Cash received from customers before goods are delivered"
+],
+"Maturity amount": [
+"The present value of future payments, discounted at the market rate",
+"The original amount borrowed, less interest already paid",
+"The fair value of the liability on the balance sheet date"
+],
+"Notes payable": [
+"Balances owed for goods bought on open account, supported only by an invoice",
+"Amounts owed to the company by customers who signed a promissory note",
+"Cash collected in advance for services not yet performed"
+],
+"Interest-bearing note": [
+"A note where the borrower receives the present value and repays the face value",
+"A note where the lender deducts all interest up front",
+"A note where interest is charged only if the borrower pays late"
+],
+"Zero-interest-bearing note": [
+"A note where the lender charges no interest at all",
+"A note where the borrower repays face value plus interest at a stated rate",
+"A note where the borrower receives the face value and repays less"
+],
+"Discount on Notes Payable": [
+"An asset account for interest the borrower prepaid",
+"A revenue account for interest the lender earns",
+"An adjunct account added to Notes Payable on the balance sheet"
+],
+"Stated rate": [
+"The rate for just the months the note is outstanding, already adjusted from annual",
+"The market rate used to compute the note's present value",
+"A one-time fee the lender charges at issuance"
+],
+"Line of credit": [
+"A long-term bond sold to investors in $1,000 denominations",
+"Unsecured short-term notes sold by large corporations",
+"A single lump-sum loan repaid in fixed monthly installments"
+],
+"Committed line of credit": [
+"An informal agreement to borrow up to a preset limit without formal paperwork",
+"A loan backed by pledged inventory or receivables",
+"A line of credit that can only be drawn on once"
+],
+"Noncommitted line of credit": [
+"A formal agreement that requires a commitment fee to keep the line available",
+"A loan backed by pledged collateral",
+"A line of credit that must be fully drawn on the first day"
+],
+"Secured loan": [
+"A loan supported only by the borrower's creditworthiness",
+"A loan that carries a higher rate because the lender takes more risk",
+"Unsecured notes sold by large corporations for 30–270 days"
+],
+"Unsecured loan": [
+"A loan backed by pledged receivables or inventory",
+"A loan where the lender can seize specific assets on default",
+"A loan that always carries a lower rate than a secured loan"
+],
+"Commercial paper": [
+"Secured long-term bonds sold to the public in $1,000 denominations",
+"A bank loan backed by the company's inventory",
+"An informal line of credit with a commitment fee"
+],
+"Accrued liability": [
+"An expense paid in cash before it is incurred",
+"Cash received before the related revenue is earned",
+"Revenue earned but not yet collected in cash"
+],
+"Salaries and Wages Payable": [
+"Wages paid to employees in advance of their work",
+"The total wage expense for the year, paid or unpaid",
+"Amounts withheld from employees for income taxes only"
+],
+"FICA": [
+"A federal unemployment tax paid only by employers",
+"State income tax withheld from employee paychecks",
+"A payroll tax paid only by employees"
+],
+"Social Security tax": [
+"1.45% each for employer and employee, on all compensation",
+"6.2% paid only by the employee, with no wage limit",
+"6.2% paid only by the employer, on all compensation"
+],
+"Medicare tax": [
+"6.2% each for employer and employee, up to an annual wage limit",
+"1.45% paid only by the employee, up to an annual wage limit",
+"1.45% paid only by the employer, on all compensation"
+],
+"Compensated absences": [
+"Bonuses paid to employees based on yearly profit",
+"Payroll taxes the employer owes on wages",
+"Unpaid leave employees take without compensation"
+],
+"Vested benefit": [
+"An unused benefit that carries forward to later periods",
+"A benefit paid only if the employee is still employed when it's used",
+"A benefit the employee loses if it isn't used within the year"
+],
+"Accumulated benefit": [
+"A benefit the employee is paid for even if terminated",
+"A benefit that expires if unused by year-end",
+"A benefit paid only when illness causes the absence"
+],
+"Bonus": [
+"A distribution of retained earnings to stockholders",
+"A payroll deduction remitted to the government",
+"A reduction of revenue recorded when sales are made"
+],
+"Refundable deposit": [
+"Cash received for goods the company will deliver later",
+"Tax collected from customers for the government",
+"A fee the customer pays that is never returned"
+],
+"Unearned revenue": [
+"Revenue earned but not yet collected in cash",
+"An expense incurred but not yet paid",
+"Cash collected for a third party, such as sales tax"
+],
+"Breakage": [
+"Recognizing gift card revenue when the customer uses the card",
+"Recognizing gift card revenue when the card is sold",
+"Refunding cash to customers for unused gift cards"
+],
+"Redemption": [
+"Recognizing gift card revenue once redemption becomes remote",
+"Recognizing gift card revenue when the card is sold",
+"Refunding cash to customers for unused gift cards"
+],
+"Sales Taxes Payable": [
+"Sales tax expense the seller pays on its own purchases",
+"Revenue the company earns from taxable sales",
+"Income tax owed on the company's profits"
+],
+"Dividends payable": [
+"Undeclared dividends on cumulative preferred stock",
+"Declared stock dividends to be distributed in shares",
+"Dividends the company expects to receive from its investments"
+],
+"Dividends in arrears": [
+"Declared cash dividends not yet paid, recorded as a current liability",
+"Stock dividends declared but not yet distributed",
+"Dividends paid in advance of declaration"
+],
+"Current maturities of long-term debt": [
+"Long-term debt that will be refinanced, so it stays noncurrent",
+"Short-term notes payable issued to banks",
+"The full balance of long-term debt, reported as current every year"
+],
+"Refinancing exception": [
+"A long-term liability reclassified as current because it's due within a year",
+"Debt the creditor can demand at any time",
+"A short-term obligation reported as noncurrent because management hopes to refinance it"
+],
+"Callable obligation": [
+"Debt due in more than one year that the creditor can't demand early",
+"A short-term note the company intends to refinance long-term",
+"Debt the company may repay early without penalty"
+],
+"Grace period": [
+"The time between a note's issuance and its maturity",
+"The window for filing a lawsuit after an accident",
+"The time a company has after year-end to issue its financial statements"
+],
+"Contingency": [
+"A known liability with a fixed amount and due date",
+"An estimated expense that has already been paid",
+"A general business risk such as a recession"
+],
+"Gain contingency": [
+"An uncertain situation that might produce a gain; accrued when probable",
+"An uncertain situation that might produce a loss; accrued if probable and estimable",
+"A realized gain recorded in the period it occurs"
+],
+"Loss contingency": [
+"An uncertain situation that might produce a loss; never accrued, only disclosed",
+"An uncertain situation that might produce a gain; never accrued",
+"A loss that has already occurred and been paid"
+],
+"Probable": [
+"The chance of the event is more than remote but less than likely",
+"The chance of the future event is slight",
+"The event has already occurred"
+],
+"Reasonably possible": [
+"The future event is likely to occur",
+"The chance of the future event is slight",
+"The event is certain to occur"
+],
+"Remote": [
+"The future event is likely to occur",
+"The chance is more than remote but less than likely",
+"The event has about a 50% chance of occurring"
+],
+"Warranty": [
+"A separately sold service contract whose revenue is deferred",
+"A cash refund paid to customers who mail in proof of purchase",
+"A noncash item given in return for proofs of purchase"
+],
+"Estimated Warranty Liability": [
+"Revenue from separately sold warranties, recognized over time",
+"The actual cost of warranty claims, recorded only when paid",
+"An expense account for repairs on the company's own equipment"
+],
+"Extended warranty": [
+"A warranty included in the product price whose cost is accrued at the sale",
+"A loss contingency accrued as an expense when the product is sold",
+"A cash rebate paid to customers who mail in receipts"
+],
+"Rebate": [
+"A noncash item given in return for proofs of purchase",
+"A coupon for a discount on a future purchase",
+"A promise to repair or replace a defective product"
+],
+"Premium": [
+"Cash returned to the customer later, reducing the net amount paid",
+"A promise to repair or replace a defective product",
+"A discount coupon mailed to customers for a future purchase"
+]
+};
+const CHAPTERS = [{id:"ch13",num:13,title:"Current Liabilities & Contingencies",course:"Intermediate Accounting",topics:TOPICS,cards:C,frqs:F,terms:TERMS,learn:LQ,hints:HINTS,termWrong:TERM_WRONG}];
+
+/* ================= storage ================= */
+const KEY="ledgerRush.v2";
+let S={ch:{}};
+try{const raw=localStorage.getItem(KEY); if(raw) S=JSON.parse(raw);
+  else{const old=localStorage.getItem("ledgerRush.ch13.v1"); if(old){const o=JSON.parse(old); S.ch.ch13={cards:o.cards||{},best:o.best||0,shifts:o.shifts||0,topics:o.topics}}}}catch(e){}
+if(!S.ch) S.ch={};
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
+S.settings=Object.assign({theme:"light",timer:15},S.settings||{});
+const applyTheme=()=>document.documentElement.classList.toggle("lr-dark",S.settings.theme==="dark");
+applyTheme();
+function R(ch){const r=S.ch[ch.id]||(S.ch[ch.id]={});
+  r.cards=r.cards||{}; r.frq=r.frq||{}; r.best=r.best||0; r.shifts=r.shifts||0;
+  if(!Array.isArray(r.topics)) r.topics=ch.topics.map(t=>t.id);
+  r.mode=r.mode||"quick"; r.qCount=r.qCount||10; r.fCount=r.fCount||2; r.flCount=r.flCount||20; r.mCount=r.mCount||6; r.flash=r.flash||{}; r.matchBest=r.matchBest||{}; r.learn=r.learn||{}; r.lCount=r.lCount||20; r.lType=r.lType||"mix"; return r;}
+
+/* ================= helpers ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const fmt=n=>Number(n).toLocaleString("en-US");
+const app=$("#app"), bar=$("#bar");
+const reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+const MAXBOX=5, TLIM=15000;
+let CH=null, G=null, timerRAF=0;
+const topicName=id=>CH.topics.find(t=>t.id===id).name;
+const ICON={
+  book:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/><path d="M9 8h7M9 11h5"/></svg>`,
+  bolt:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg>`,
+  pen:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/></svg>`,
+  gear:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>`,
+  clock:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+  sun:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>`,
+  moon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>`,
+  close:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg>`,
+  check:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="m8 12.5 3 3 5-6"/></svg>`,
+  cards:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="14" height="14" rx="2.5"/><path d="M7 3h11.5A2.5 2.5 0 0 1 21 5.5V17"/></svg>`,
+  grid:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7.5" height="7.5" rx="2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="2"/><path d="m14.5 17.5 2 2 4-4.5"/></svg>`,
+  bulb:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg>`,
+  tip:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>`
+};
+function ring(pct,size=64){const r=(size-8)/2,c=2*Math.PI*r,off=c*(1-pct);
+  return `<svg class="ring" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" aria-label="${Math.round(pct*100)}% mastered"><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="6"/><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--accent)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 ${size/2} ${size/2})"/><text x="50%" y="50%" text-anchor="middle" dominant-baseline="central">${Math.round(pct*100)}%</text></svg>`}
+function chMastery(ch){const r=R(ch);const tot=ch.cards.length*MAXBOX;const got=ch.cards.reduce((s,c)=>s+(r.cards[c.id]?.box||0),0);return tot?got/tot:0}
+function topicMastery(tid){const r=R(CH);const cs=CH.cards.filter(c=>c.t===tid);return cs.reduce((s,c)=>s+(r.cards[c.id]?.box||0),0)/cs.length}
+const missPool=()=>{const r=R(CH);return CH.cards.filter(c=>{const x=r.cards[c.id];return x&&x.seen&&x.box<=1&&r.topics.includes(c.t)})};
+
+function topbar(crumbs,right=""){
+  bar.innerHTML=`<button class="brand" id="brand" aria-label="Ledger Rush library">${ICON.book}Ledger Rush</button>
+   <span class="crumbs">${crumbs||""}</span><div class="cover-right">${right}<button class="gear" id="gear" aria-label="Settings">${ICON.gear}<span>Settings</span></button></div>`;
+  $("#gear").onclick=openSettings;
+  $("#brand").onclick=library;
+  const cb=$("#crumb-ch"); if(cb) cb.onclick=()=>setup(CH);
+}
+const go=(html,soft)=>{stopTimer(); if(soft){const y=window.scrollY; app.innerHTML=html.replace(/ enter"/g,'"').replace(/class="enter"/g,""); window.scrollTo({top:y});} else {app.innerHTML=html;window.scrollTo({top:0});}};
+
+/* ================= study time ================= */
+S.time=Object.assign({total:0,days:{},log:{}},S.time||{});
+if(!S.time.log) S.time.log={};
+const dayKey=(d=new Date())=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+// migrate the old running totals (recorded today) into today's log
+if(S.time.ch){const L=S.time.log[dayKey()]||(S.time.log[dayKey()]={});
+  for(const [id,c] of Object.entries(S.time.ch)){const t=L[id]||(L[id]={total:0,modes:{},topics:{}}); t.total+=c.total||0;
+    for(const [k,v] of Object.entries(c.modes||{})) t.modes[k]=(t.modes[k]||0)+v; for(const [k,v] of Object.entries(c.topics||{})) t.topics[k]=(t.topics[k]||0)+v;}
+  delete S.time.ch; save();}
+let lastInput=Date.now(), tickN=0;
+["pointerdown","keydown","wheel","touchstart","mousemove"].forEach(ev=>addEventListener(ev,()=>{lastInput=Date.now()},{passive:true}));
+const fmtDur=s=>{s=Math.round(s||0); if(s<60) return s+"s"; const m=Math.floor(s/60),h=Math.floor(m/60); return h?`${h}h ${m%60}m`:`${m}m`;};
+function curTopic(){try{if(!G)return null;
+  if(G.kind==="quick")return G.cur&&G.cur.c.t; if(G.kind==="learn")return G.cur&&G.cur.it.t;
+  if(G.kind==="flash")return TBYID(G.deck[G.i]).t; if(G.kind==="frq")return G.f&&G.f.t;}catch(e){} return null}
+setInterval(()=>{
+  if(!G||!CH||document.visibilityState!=="visible"||$("#settings")) return;
+  if(!app.querySelector("#card,#fc,.mgrid")) return;
+  if(Date.now()-lastInput>120000) return;
+  const T=S.time, d=dayKey(); T.total++; T.days[d]=(T.days[d]||0)+1;
+  const L=T.log[d]||(T.log[d]={}); const c=L[CH.id]||(L[CH.id]={total:0,modes:{},topics:{}}); c.total++;
+  c.modes[G.kind]=(c.modes[G.kind]||0)+1;
+  const tp=curTopic(); if(tp) c.topics[tp]=(c.topics[tp]||0)+1;
+  if(++tickN%5===0) save();
+},1000);
+addEventListener("visibilitychange",()=>{if(document.visibilityState!=="visible") save()});
+addEventListener("pagehide",()=>save());
+const MODE_NAMES={quick:"Quick-fire",learn:"Learn",flash:"Flashcards",match:"Match",frq:"Free response"};
+
+/* UCLA-style academic quarters (approximate dates) */
+const QSPAN={fall:[[8,15],[11,31]],winter:[[0,1],[2,22]],spring:[[2,23],[5,15]],summer:[[5,16],[8,14]]};
+function mkQ(season,y){const r=QSPAN[season];return {key:y+"-"+season,season,year:y,name:season[0].toUpperCase()+season.slice(1)+" "+y,start:new Date(y,r[0][0],r[0][1]),end:new Date(y,r[1][0],r[1][1])}}
+function quarterFor(d){const y=d.getFullYear(),md=(d.getMonth()+1)*100+d.getDate();
+  return md>=915?mkQ("fall",y):md<=322?mkQ("winter",y):md<=615?mkQ("spring",y):mkQ("summer",y)}
+function shiftQ(q,n){for(let i=0;i<Math.abs(n);i++){const d=new Date(n<0?q.start:q.end);d.setDate(d.getDate()+(n<0?-1:1));q=quarterFor(d)}return q}
+const parseDay=k=>{const [y,m,d]=k.split("-").map(Number);return new Date(y,m-1,d)};
+const fmtD=d=>d.toLocaleDateString("en-US",{month:"short",day:"numeric"});
+function quarterAgg(q){const out={total:0,ch:{},days:{}};
+  for(const [k,L] of Object.entries(S.time.log)){const d=parseDay(k); if(d<q.start||d>q.end) continue;
+    for(const [id,c] of Object.entries(L)){const a=out.ch[id]||(out.ch[id]={total:0,modes:{},topics:{}}); a.total+=c.total; out.total+=c.total;
+      out.days[k]=(out.days[k]||0)+c.total;
+      for(const [m,v] of Object.entries(c.modes||{})) a.modes[m]=(a.modes[m]||0)+v; for(const [t,v] of Object.entries(c.topics||{})) a.topics[t]=(a.topics[t]||0)+v;}}
+  return out}
+function allQuarters(){const cur=quarterFor(new Date()); const keys=Object.keys(S.time.log).sort();
+  let q=keys.length?quarterFor(parseDay(keys[0])):cur; const list=[]; for(let i=0;i<40;i++){list.push(q); if(q.key===cur.key) break; q=shiftQ(q,1)} return list.reverse()}
+function timeHtml(confirmReset,qOff){
+  const now=new Date(), curQ=quarterFor(now), q=shiftQ(curQ,qOff), A=quarterAgg(q), isCur=qOff===0;
+  const today=S.time.days[dayKey()]||0;
+  // weekly bars across the quarter
+  const nWeeks=Math.ceil(((q.end-q.start)/864e5+1)/7);
+  const weeks=Array.from({length:nWeeks},(_,w)=>{const s=new Date(q.start);s.setDate(s.getDate()+w*7);const e=new Date(s);e.setDate(e.getDate()+6);
+    let v=0; for(const [k,x] of Object.entries(A.days)){const d=parseDay(k); if(d>=s&&d<=e) v+=x} return {w:w+1,s,e,v,now:isCur&&now>=s&&now<=new Date(e.getTime()+864e5-1)}});
+  const maxW=Math.max(60,...weeks.map(w=>w.v));
+  const bar=(v,max)=>`<span class="tbar"><i style="width:${max?Math.max(v?3:0,v/max*100):0}%"></i></span>`;
+  const chRows=CHAPTERS.map(ch=>{const c=A.ch[ch.id]||{total:0,modes:{},topics:{}};
+    const modes=Object.keys(MODE_NAMES).map(k=>[k,c.modes[k]||0]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+    const tops=ch.topics.map(t=>[t.name,c.topics[t.id]||0]).filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]);
+    const mMax=Math.max(1,...modes.map(x=>x[1])), tMax=Math.max(1,...tops.map(x=>x[1]));
+    return `<div class="tch"><div class="tch-h"><span><b>Ch. ${ch.num}</b> ${esc(ch.title)}</span><b class="mono">${fmtDur(c.total)}</b></div>
+      ${c.total?`<div class="tsub"><span class="eyebrow">By mode</span>${modes.map(([k,v])=>`<div class="trow"><span>${MODE_NAMES[k]}</span>${bar(v,mMax)}<span class="mono">${fmtDur(v)}</span></div>`).join("")}</div>
+      ${tops.length?`<div class="tsub"><span class="eyebrow">By topic</span>${tops.map(([n,v])=>`<div class="trow"><span>${esc(n)}</span>${bar(v,tMax)}<span class="mono">${fmtDur(v)}</span></div>`).join("")}</div>`:""}`
+      :`<p class="note">No study time in ${q.name}.</p>`}</div>`}).join("");
+  const qs=allQuarters(); const qTot=x=>quarterAgg(x).total; const qMax=Math.max(1,...qs.map(qTot));
+  return `<div class="set">
+    <div class="qnav"><button class="x" id="qprev" aria-label="Previous quarter">‹</button>
+      <div class="qname"><b>${q.name}</b><span>${fmtD(q.start)} – ${fmtD(q.end)}${isCur?" · current":""}</span></div>
+      <button class="x" id="qnext" aria-label="Next quarter" ${isCur?"disabled":""}>›</button></div>
+    <div class="tstats"><div><b>${fmtDur(A.total)}</b><span>This quarter</span></div><div><b>${fmtDur(today)}</b><span>Today</span></div><div><b>${fmtDur(S.time.total)}</b><span>All time</span></div></div>
+    <div class="tweek" style="grid-template-columns:repeat(${nWeeks},minmax(0,1fr))" role="img" aria-label="Study time by week in ${q.name}">${weeks.map(w=>`<div class="tday${w.now?" today":""}" title="Week ${w.w} (${fmtD(w.s)}–${fmtD(w.e)}): ${fmtDur(w.v)}"><span class="tcol"><i style="height:${w.v/maxW*100}%"></i></span><span class="tlbl">${w.w}</span></div>`).join("")}</div>
+    <p class="note" style="margin-top:-4px">Weeks of the quarter. ${weeks.some(w=>w.v)?`Busiest: week ${weeks.reduce((a,b)=>b.v>a.v?b:a).w} (${fmtDur(Math.max(...weeks.map(w=>w.v)))}).`:"No study time yet this quarter."}</p>
+  </div>
+  <div class="set"><h3>By chapter · ${q.name}</h3>${chRows}</div>
+  <div class="set"><h3>All quarters</h3>${qs.map((x,i)=>{const t=qTot(x);return `<button class="trow tq${x.key===q.key?" sel":""}" data-qkey="${x.key}"><span>${x.name}</span>${bar(t,qMax)}<span class="mono">${fmtDur(t)}</span></button>`}).join("")}</div>
+  <p class="note">Time counts only while a question, card or match board is on screen and you've been active in the last 2 minutes. Quarter dates are approximate UCLA dates. Saved in this browser.</p>
+  <p class="note">${confirmReset?`Erase all study time? <button class="linkish" id="treset-yes">Yes, reset</button> · <button class="linkish" id="treset-no">Cancel</button>`:`<button class="linkish" id="treset">Reset study time</button>`}</p>`;
+}
+
+/* ================= settings ================= */
+const TIMERS=[0,10,15,20,30,60];
+function openSettings(){
+  if($("#settings")) return;
+  const pausedAt=performance.now(); const t0=S.settings.timer; const inCard=G&&G.kind==="quick"&&!G.locked&&$("#card");
+  if(inCard) stopTimer();
+  const el=document.createElement("div"); el.className="scrim"; el.id="settings";
+  let tab="prefs", confirmReset=false, qOff=0;
+  const draw=()=>{const st=S.settings; el.innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-labelledby="set-h">
+    <div class="dialog-h"><h2 id="set-h">Settings</h2><button class="x" id="set-x" aria-label="Close settings">${ICON.close}</button></div>
+    <div class="seg" role="group" aria-label="Settings section"><button data-tab="prefs" aria-pressed="${tab==="prefs"}">Preferences</button><button data-tab="time" aria-pressed="${tab==="time"}">${ICON.clock}Study time</button></div>
+    ${tab==="time"?timeHtml(confirmReset,qOff):`
+    <div class="set"><h3>Appearance</h3><div class="seg" role="group" aria-label="Theme">
+      <button data-theme-set="light" aria-pressed="${st.theme==="light"}">${ICON.sun}Light</button>
+      <button data-theme-set="dark" aria-pressed="${st.theme==="dark"}">${ICON.moon}Dark</button></div></div>
+    <div class="set"><h3>Quick-fire countdown</h3>
+      <div class="chips" role="group" aria-label="Seconds per card">${TIMERS.map(t=>`<button class="chip" data-timer="${t}" aria-pressed="${st.timer===t}">${t?t+"s":"Off"}</button>`).join("")}</div>
+      <p class="note">${st.timer?`You get ${st.timer} seconds per card for a speed bonus. Answer faster for a bigger bonus. If time runs out you just lose the bonus, and you can keep working on the question.`:"No clock and no speed bonus. Take as long as you need."}</p></div>`}
+    <button class="btn primary" id="set-done">Done</button></div>`;
+    el.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>{tab=b.dataset.tab;confirmReset=false;draw();const t=el.querySelector(`[data-tab="${tab}"]`);if(t)t.focus()});
+    const qp=el.querySelector("#qprev"); if(qp) qp.onclick=()=>{qOff--;draw();el.querySelector("#qprev").focus()};
+    const qn=el.querySelector("#qnext"); if(qn) qn.onclick=()=>{if(qOff<0){qOff++;draw();const b=el.querySelector(qOff<0?"#qnext":"#qprev"); if(b) b.focus()}};
+    el.querySelectorAll("[data-qkey]").forEach(b=>b.onclick=()=>{const cur=quarterFor(new Date()); let o=0,q=cur; while(q.key!==b.dataset.qkey&&o>-40){o--;q=shiftQ(cur,o)} qOff=o; draw()});
+    const rs=el.querySelector("#treset"); if(rs) rs.onclick=()=>{confirmReset=true;draw()};
+    const ry=el.querySelector("#treset-yes"); if(ry) ry.onclick=()=>{S.time={total:0,days:{},log:{}};save();confirmReset=false;qOff=0;draw()};
+    const rn=el.querySelector("#treset-no"); if(rn) rn.onclick=()=>{confirmReset=false;draw()};
+    el.querySelectorAll("[data-theme-set]").forEach(b=>b.onclick=()=>{S.settings.theme=b.dataset.themeSet;save();applyTheme();draw()});
+    el.querySelectorAll("[data-timer]").forEach(b=>b.onclick=()=>{S.settings.timer=+b.dataset.timer;save();draw()});
+    el.querySelector("#set-x").onclick=close; el.querySelector("#set-done").onclick=close; };
+  const close=()=>{el.remove(); document.removeEventListener("keydown",esc1,true);
+    if(inCard&&G&&!G.locked){ if(S.settings.timer!==t0) G.t0=performance.now(); else G.t0+=performance.now()-pausedAt; setupClock(); runTimer(); }
+    const g=$("#gear"); if(g) g.focus(); };
+  const esc1=e=>{if(e.key==="Escape"){e.stopPropagation();close()}};
+  el.addEventListener("click",e=>{if(e.target===el)close()});
+  document.addEventListener("keydown",esc1,true);
+  draw(); document.body.appendChild(el); $("#set-done").focus();
+}
+
+/* ================= library ================= */
+function library(){
+  G=null;
+  topbar("Library");
+  go(`<section class="enter">
+    <span class="eyebrow">Study library</span>
+    <h1 class="display">Pick a chapter.</h1>
+    <p class="lede">Every chapter has four ways to study: quick-fire questions with spaced repetition, flashcards for key terms, a timed term-matching game, and exam-style free-response problems.</p>
+  </section>
+  <section class="shelf">
+    ${CHAPTERS.map(ch=>{const r=R(ch);const m=chMastery(ch);const fDone=Object.keys(r.frq).length;return `
+    <button class="book enter" data-ch="${ch.id}">
+      <div class="book-cover"><span class="eyebrow">${esc(ch.course)}</span><div><div class="num">${ch.num}</div><div class="ttl">${esc(ch.title)}</div></div></div>
+      <div class="book-body">${ring(m)}<div class="book-stats">
+        <span><b>${ch.cards.length}</b> questions · <b>${ch.terms.length}</b> terms · <b>${ch.frqs.length}</b> FRQs</span>
+        <span>Best round <b>${fmt(r.best)}</b> · ${fDone} FRQs tried</span></div></div>
+    </button>`}).join("")}
+    <div class="book add"><strong>Add another chapter</strong><p>Send Claude your notes for the next chapter and ask to add it to Ledger Rush. It'll show up on this shelf with its own questions, flashcards and FRQs.</p></div>
+  </section>
+  <p class="foot">Progress saves in this browser.</p>`);
+  app.querySelectorAll(".book[data-ch]").forEach(b=>b.onclick=()=>setup(CHAPTERS.find(c=>c.id===b.dataset.ch)));
+}
+
+/* ================= setup ================= */
+const Q_COUNTS=[5,10,15,20,"All"], F_COUNTS=[1,2,3,5,"All"];
+const MODES={
+  quick:{name:"Quick-fire",icon:"bolt",desc:"Fast questions: fill journal-entry blanks, sort liabilities, crunch numbers. Misses come back until they stick.",countLabel:"Questions per round",counts:Q_COUNTS,key:"qCount",unit:["card","cards"],pool:(ch,r)=>ch.cards.filter(c=>r.topics.includes(c.t)),of:(ch,t)=>ch.cards.filter(c=>c.t===t).length},
+  learn:{name:"Learn",icon:"check",desc:"Gizmo-style questions on key ideas: choose one answer or select all that apply. Misses come back until you get them right.",countLabel:"Questions per session",counts:[10,20,30,"All"],key:"lCount",unit:["question","questions"],pool:(ch,r)=>learnPool(ch,r),of:(ch,t)=>{const r=R(ch);return learnPool(ch,Object.assign({},r,{topics:[t]})).length}},
+  flash:{name:"Flashcards",icon:"cards",desc:"Flip through key terms. Sort each into Know it or Still learning, then review the ones that didn't stick.",countLabel:"Cards per deck",counts:[10,20,30,"All"],key:"flCount",unit:["term","terms"],pool:(ch,r)=>ch.terms.filter(c=>r.topics.includes(c.t)),of:(ch,t)=>ch.terms.filter(c=>c.t===t).length},
+  match:{name:"Match",icon:"grid",desc:"Match every term to its definition as fast as you can. A wrong pair adds a 1-second penalty.",countLabel:"Pairs per game",counts:[4,6,8],key:"mCount",unit:["term","terms"],pool:(ch,r)=>ch.terms.filter(c=>r.topics.includes(c.t)),of:(ch,t)=>ch.terms.filter(c=>c.t===t).length},
+  frq:{name:"Free response",icon:"pen",desc:"Exam-style, multi-part problems. Write full entries and explanations, then get graded against a rubric.",countLabel:"Problems per set",counts:F_COUNTS,key:"fCount",unit:["FRQ","FRQs"],pool:(ch,r)=>ch.frqs.filter(f=>r.topics.includes(f.t)),of:(ch,t)=>ch.frqs.filter(f=>f.t===t).length}
+};
+function setup(ch,soft,focusSel){
+  CH=ch; G=null; const r=R(ch);
+  topbar(`<button id="crumb-lib">Library</button> / Ch. ${ch.num}`);
+  $("#crumb-lib").onclick=library;
+  if(!MODES[r.mode]) r.mode="quick";
+  const M=MODES[r.mode], mode=r.mode;
+  const cur=r[M.key]; const pool=M.pool(ch,r).length;
+  const minPool=mode==="match"?2:1;
+  const n=cur==="All"?pool:Math.min(cur,pool);
+  const misses=missPool().length;
+  const learning=ch.terms.filter(t=>r.topics.includes(t.t)&&r.flash[t.id]===false).length;
+  const known=ch.terms.filter(t=>r.topics.includes(t.t)&&r.flash[t.id]===true).length;
+  const ptsTot=ch.frqs.filter(f=>r.topics.includes(f.t)).reduce((s,f)=>s+f.parts.reduce((a,p)=>a+p.rubric.reduce((b,x)=>b+x[0],0),0),0);
+  const best=r.matchBest[n];
+  const summary={
+    quick:`<dt>Best score</dt><dd>${fmt(r.best)}</dd><dt>Due for review</dt><dd>${misses}</dd>`,
+    flash:`<dt>Know it</dt><dd>${known}</dd><dt>Still learning</dt><dd>${learning}</dd>`,
+    learn:`<dt>Answer type</dt><dd>${(LTYPES.find(x=>x[0]===r.lType)||LTYPES[2])[1]}</dd><dt>Mastered</dt><dd>${M.pool(ch,r).filter(q=>(r.learn[q.id]?.box||0)>=3).length} of ${pool}</dd>`,
+    match:`<dt>Best time (${n} pairs)</dt><dd>${best?best.toFixed(1)+"s":"—"}</dd>`,
+    frq:`<dt>Points in pool</dt><dd>${ptsTot}</dd>`}[mode];
+  const startLabel={quick:"Start round",learn:"Start learning",flash:"Study flashcards",match:"Start matching",frq:"Start free response"}[mode];
+  const note={quick:`Keys: A–D or 1–4 to answer, Enter to continue. You have 3 hearts per round. Countdown: ${S.settings.timer?S.settings.timer+"s per card":"off"} (change in Settings).`,
+    learn:"Keys: 1–6 to pick, Enter to continue. Choose “Don't know?” to see the answer; it'll come back later.",
+    flash:"Keys: Space to flip, → Know it, ← Still learning.",
+    match:"Click a term, then its definition. Clear the board to stop the clock.",
+    frq:"Write full account names, as on exams. Claude grades each part against the rubric, or you can grade yourself against the model answer."}[mode];
+  go(`<section class="enter">
+    <span class="eyebrow">Chapter ${ch.num} · ${esc(ch.course)}</span>
+    <h1 class="display">${esc(ch.title)}</h1>
+  </section>
+  <section class="setup">
+    <div class="panel panel-pad enter">
+      <div class="step"><div class="step-h"><span class="eyebrow">Step 1</span><h2>Choose a mode</h2></div>
+        <div class="modes">${Object.entries(MODES).map(([k,m])=>`<button class="mode" data-mode="${k}" aria-pressed="${k===mode}"><span class="mi">${ICON[m.icon]}${m.name}</span><p>${m.desc}</p></button>`).join("")}</div></div>
+      <div class="step"><div class="step-h"><span class="eyebrow">Step 2</span><h2>${M.countLabel}</h2></div>
+        <div class="chips" role="group" aria-label="How many">${M.counts.map(c=>`<button class="chip" data-n="${c}" aria-pressed="${String(c)===String(cur)}">${c}</button>`).join("")}</div>
+        ${mode==="learn"?`<div class="step-h" style="margin-top:8px"><h2 style="font-size:18px">Answer type</h2></div>
+        <div class="seg seg3" role="group" aria-label="Answer type">${LTYPES.map(([k,l])=>`<button data-ltype="${k}" aria-pressed="${r.lType===k}">${l}</button>`).join("")}</div>
+        <p class="note">${{multi:"Every question has 2 or more correct answers. Select all that apply.",single:"Every question has exactly one correct answer, including term definitions.",mix:"A mix of select-all-that-apply and single-answer questions."}[r.lType]}</p>`:""}</div>
+      <div class="step"><div class="step-h"><span class="eyebrow">Step 3</span><h2>Topics</h2></div>
+        <div class="topics">${ch.topics.map(t=>{const on=r.topics.includes(t.id);const m=Math.round(topicMastery(t.id));const cnt=M.of(ch,t.id);
+          return `<button class="tp" data-t="${t.id}" aria-pressed="${on}"><span class="box"></span><span class="nm"><strong>${esc(t.name)}</strong><small>${esc(t.note)} · ${cnt} ${M.unit[cnt===1?0:1]}</small></span>
+          <span class="meter" title="Quick-fire mastery ${m} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=m?"on":""}"></i>`).join("")}</span></button>`}).join("")}</div>
+        <div class="tiny-actions"><button class="btn quiet" id="all">Select all</button><button class="btn quiet" id="none">Clear</button></div></div>
+    </div>
+    <aside class="panel panel-pad summary enter">
+      <span class="eyebrow">This session</span>
+      <dl><dt>Mode</dt><dd>${M.name}</dd><dt>${M.countLabel.split(" per")[0]}</dt><dd>${n}</dd><dt>Topics</dt><dd>${r.topics.length} of ${ch.topics.length}</dd>${summary}</dl>
+      <button class="btn primary big" id="start" ${pool>=minPool?"":"disabled"}>${startLabel}</button>
+      ${mode==="quick"?`<button class="btn" id="drill" ${misses?"":"disabled"}>Drill my misses (${misses})</button>`:""}
+      ${mode==="flash"?`<button class="btn" id="drill" ${learning?"":"disabled"}>Only still learning (${learning})</button>`:""}
+      <p class="note">${note}</p>
+      ${pool>=minPool?"":`<p class="msg">Pick at least one topic${mode==="match"?" with 2 or more terms":""}.</p>`}
+    </aside>
+  </section>
+  <p class="foot"><span id="resetwrap"><button class="linkish" id="reset">Reset Chapter ${ch.num} progress</button></span></p>`,soft);
+  const re=sel=>setup(ch,true,sel);
+  if(focusSel){const el=app.querySelector(focusSel); if(el) el.focus({preventScroll:true});}
+  app.querySelectorAll(".mode").forEach(b=>b.onclick=()=>{r.mode=b.dataset.mode;save();re(`.mode[data-mode="${b.dataset.mode}"]`)});
+  app.querySelectorAll("[data-ltype]").forEach(b=>b.onclick=()=>{r.lType=b.dataset.ltype;save();re(`[data-ltype="${b.dataset.ltype}"]`)});
+  app.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{r[M.key]=b.dataset.n==="All"?"All":+b.dataset.n; save(); re(`.chip[data-n="${b.dataset.n}"]`)});
+  app.querySelectorAll(".tp").forEach(b=>b.onclick=()=>{const t=b.dataset.t; r.topics=r.topics.includes(t)?r.topics.filter(x=>x!==t):[...r.topics,t]; save(); re(`.tp[data-t="${t}"]`)});
+  $("#all").onclick=()=>{r.topics=ch.topics.map(t=>t.id);save();re("#all")};
+  $("#none").onclick=()=>{r.topics=[];save();re("#none")};
+  $("#start").onclick=()=>({quick:()=>startQuick("round",n),learn:()=>startLearn(n),flash:()=>startFlash(false,n),match:()=>startMatch(n),frq:()=>startFrq(n)})[mode]();
+  const d=$("#drill"); if(d) d.onclick=()=>mode==="quick"?startQuick("drill",Math.min(20,misses)):startFlash(true);
+  $("#reset").onclick=()=>{$("#resetwrap").innerHTML=`Erase all Chapter ${ch.num} progress? <button class="linkish" id="ry">Yes, reset</button> · <button class="linkish" id="rn">Cancel</button>`;
+    $("#ry").onclick=()=>{delete S.ch[ch.id];save();re()}; $("#rn").onclick=()=>re()};
+}
+
+/* ================= flashcards ================= */
+const TBYID=id=>CH.terms.find(t=>t.id===id);
+function startFlash(onlyLearning,n){
+  const r=R(CH); let pool=CH.terms.filter(t=>r.topics.includes(t.t));
+  if(onlyLearning) pool=pool.filter(t=>r.flash[t.id]===false);
+  // still-learning and unseen first, then known
+  const rank=t=>r.flash[t.id]===false?0:r.flash[t.id]===undefined?1:2;
+  pool=shuffle(pool).sort((a,b)=>rank(a)-rank(b));
+  if(n&&n!=="All") pool=pool.slice(0,n);
+  if(!pool.length) return;
+  G={kind:"flash",deck:shuffle(pool.map(t=>t.id)),i:0,flipped:false,res:{}};
+  renderFlash();
+}
+function renderFlash(){
+  const r=R(CH); const t=TBYID(G.deck[G.i]); const defFirst=r.flFront==="def"; G.flipped=false;
+  const vals=Object.values(G.res); const k=vals.filter(Boolean).length, l=vals.length-k;
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Flashcards`);
+  const face=(isTerm)=>isTerm?`<span class="eyebrow">Term</span><p class="fc-term">${esc(t.term)}</p>`:`<span class="eyebrow">Definition</span><p class="fc-def">${esc(t.def)}</p>`;
+  go(`<div class="quiz">
+    <div class="qtop"><button class="x" id="quit" aria-label="Exit flashcards">${ICON.close}</button>
+      <div class="track"><i style="width:${G.i/G.deck.length*100}%"></i></div><span class="qcount" style="margin:0">${G.i+1} / ${G.deck.length}</span></div>
+    <div class="fc-tally"><span class="tl learn"><b>${l}</b> Still learning</span><span class="eyebrow">${esc(topicName(t.t))}</span><span class="tl know"><b>${k}</b> Know it</span></div>
+    <button class="flashcard enter" id="fc" aria-label="Flip card" aria-pressed="false">
+      <span class="fc-inner"><span class="fc-face front">${face(!defFirst)}<span class="fc-hint">Click or press Space to flip</span></span>
+      <span class="fc-face back">${face(defFirst)}</span></span>
+    </button>
+    <div class="fc-actions">
+      <button class="btn big fc-learn" id="learn">${CROSS}<span>Still learning</span></button>
+      <button class="btn big fc-know" id="know">${CHECK}<span>Know it</span></button>
+    </div>
+    <div class="row fc-opts">
+      <button class="btn quiet" id="prev" ${G.i?"":"disabled"}>← Previous</button>
+      <button class="btn quiet" id="swap">${defFirst?"Show terms first":"Show definitions first"}</button>
+    </div>
+  </div>`);
+  $("#quit").onclick=()=>setup(CH);
+  $("#fc").onclick=flipFlash;
+  $("#know").onclick=()=>markFlash(true); $("#learn").onclick=()=>markFlash(false);
+  $("#prev").onclick=()=>{if(G.i){G.i--;renderFlash()}};
+  $("#swap").onclick=()=>{r.flFront=defFirst?"term":"def";save();renderFlash()};
+}
+function flipFlash(){const f=$("#fc"); if(!f) return; G.flipped=!G.flipped; f.classList.toggle("flipped",G.flipped); f.setAttribute("aria-pressed",String(G.flipped))}
+function markFlash(known){
+  const id=G.deck[G.i]; const r=R(CH); r.flash[id]=known; G.res[id]=known; save();
+  if(G.i<G.deck.length-1){G.i++;renderFlash()} else finishFlash();
+}
+function finishFlash(){
+  const ids=G.deck, k=ids.filter(id=>G.res[id]).length, learn=ids.filter(id=>G.res[id]===false);
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Flashcards`);
+  const pct=ids.length?k/ids.length:0;
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:22px">
+  <section class="panel panel-pad enter"><div class="result-top">${ring(pct,96)}<div><span class="eyebrow">Deck finished</span>
+    <p class="verdict" style="color:${pct>=0.8?"var(--accent)":"var(--gilt)"}">${pct===1?"You know them all":pct>=0.8?"Almost there":"Keep going"}</p></div></div>
+    <div class="statgrid"><div><b>${k}</b><span>Know it</span></div><div><b>${learn.length}</b><span>Still learning</span></div><div><b>${ids.length}</b><span>Cards</span></div></div></section>
+  ${learn.length?`<section class="panel panel-pad enter"><h2>Still learning</h2><div class="misses">${learn.map(id=>{const t=TBYID(id);return `<div class="miss"><p class="ans" style="margin:0">${esc(t.term)}</p><p class="why">${esc(t.def)}</p></div>`}).join("")}</div></section>`:""}
+  <div class="row">${learn.length?`<button class="btn primary big" id="again">Review ${learn.length} still learning</button>`:""}<button class="btn ${learn.length?"":"primary big"}" id="restart">Restart deck</button><button class="btn quiet" id="back">Change settings</button></div></div>`);
+  const a=$("#again"); if(a) a.onclick=()=>{G={kind:"flash",deck:shuffle(learn),i:0,flipped:false,res:{}};renderFlash()};
+  $("#restart").onclick=()=>{G={kind:"flash",deck:shuffle(ids),i:0,flipped:false,res:{}};renderFlash()};
+  $("#back").onclick=()=>setup(CH);
+}
+document.addEventListener("keydown",e=>{
+  if(!G||G.kind!=="flash"||!$("#fc")||$("#settings")) return;
+  if(e.key===" "||e.key==="ArrowUp"||e.key==="ArrowDown"){e.preventDefault();flipFlash()}
+  else if(e.key==="ArrowRight"){e.preventDefault();markFlash(true)}
+  else if(e.key==="ArrowLeft"){e.preventDefault();markFlash(false)}
+});
+
+/* ================= match ================= */
+function startMatch(n){
+  const r=R(CH); const pool=CH.terms.filter(t=>r.topics.includes(t.t)); if(pool.length<2) return;
+  const pairs=shuffle(pool).slice(0,Math.min(n,pool.length));
+  const tiles=shuffle(pairs.flatMap(t=>[{id:t.id,k:"t",text:t.term},{id:t.id,k:"d",text:t.def}]));
+  G={kind:"match",n:pairs.length,pairs:pairs.map(p=>p.id),tiles,sel:null,matched:0,penalty:0,t0:performance.now(),busy:false};
+  const best=r.matchBest[G.n];
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Match`);
+  go(`<div class="quiz match">
+    <div class="qtop"><button class="x" id="quit" aria-label="Exit match">${ICON.close}</button>
+      <div class="track"><i id="mprog" style="width:0%"></i></div>
+      <span class="qpill clock mclock">${CLOCK}<b id="mtime">0.0s</b></span></div>
+    <div class="qmeta"><span class="qcount">Match each term to its definition</span>${best?`<span class="qpill">Best <b>${best.toFixed(1)}s</b></span>`:""}<span class="qpill pen" id="pen" hidden></span></div>
+    <div class="mgrid">${tiles.map((x,i)=>`<button class="mtile ${x.k==="t"?"term":"def"}" data-i="${i}">${esc(x.text)}</button>`).join("")}</div>
+  </div>`);
+  $("#quit").onclick=()=>setup(CH);
+  app.querySelectorAll(".mtile").forEach(b=>b.onclick=()=>pickTile(b));
+  const tick=()=>{if(!G||G.kind!=="match"||G.done)return; const el=$("#mtime"); if(el) el.textContent=((performance.now()-G.t0)/1000+G.penalty).toFixed(1)+"s"; timerRAF=requestAnimationFrame(tick)};
+  timerRAF=requestAnimationFrame(tick);
+}
+function pickTile(b){
+  if(G.busy||b.classList.contains("gone")) return;
+  const i=+b.dataset.i;
+  if(G.sel===null){G.sel=i;b.classList.add("sel");return}
+  if(G.sel===i){G.sel=null;b.classList.remove("sel");return}
+  const a=G.tiles[G.sel], c=G.tiles[i], ab=app.querySelector(`.mtile[data-i="${G.sel}"]`);
+  if(a.k===c.k){ab.classList.remove("sel");G.sel=i;b.classList.add("sel");return}
+  G.busy=true;
+  if(a.id===c.id){
+    ab.classList.remove("sel"); ab.classList.add("ok"); b.classList.add("ok"); G.matched++;
+    $("#mprog").style.width=G.matched/G.n*100+"%";
+    setTimeout(()=>{ab.classList.add("gone");b.classList.add("gone");ab.disabled=true;b.disabled=true;G.busy=false;G.sel=null; if(G.matched===G.n) finishMatch()},reduce?60:320);
+  } else {
+    ab.classList.remove("sel"); ab.classList.add("bad"); b.classList.add("bad"); G.penalty+=1;
+    const p=$("#pen"); p.hidden=false; p.textContent=`+${G.penalty}s penalty`;
+    setTimeout(()=>{ab.classList.remove("bad");b.classList.remove("bad");G.busy=false;G.sel=null},reduce?250:550);
+  }
+}
+function finishMatch(){
+  G.done=true; stopTimer();
+  const time=Math.round(((performance.now()-G.t0)/1000+G.penalty)*10)/10;
+  const r=R(CH); const prev=r.matchBest[G.n]; const nb=!prev||time<prev; if(nb) r.matchBest[G.n]=time; save();
+  const pairs=G.pairs.map(TBYID), n=G.n;
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Match`);
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:22px">
+  <section class="panel panel-pad enter"><span class="eyebrow">${n} pairs matched</span>
+    <p class="verdict mono" style="color:var(--accent);font-size:clamp(44px,9vw,72px)">${time.toFixed(1)}s</p>
+    <p style="margin:6px 0 0;color:var(--muted)">${nb?(prev?`New best! Previous best was ${prev.toFixed(1)}s.`:"First time on the board. Beat it next round."):`Best time: ${prev.toFixed(1)}s`}${G.penalty?` · Includes ${G.penalty}s of penalties.`:""}</p></section>
+  <section class="panel panel-pad enter"><h2>Pairs in this game</h2><div class="misses">${pairs.map(t=>`<div class="miss"><p class="ans" style="margin:0">${esc(t.term)}</p><p class="why">${esc(t.def)}</p></div>`).join("")}</div></section>
+  <div class="row"><button class="btn primary big" id="again">Play again</button><button class="btn quiet" id="back">Change settings</button></div></div>`);
+  $("#again").onclick=()=>startMatch(n); $("#back").onclick=()=>setup(CH);
+}
+
+/* ================= learn (Gizmo-style) ================= */
+const LTYPES=[["multi","Multiple answers"],["single","One answer"],["mix","Mix"]];
+function learnPool(ch,r){
+  const type=r.lType||"mix"; const auth=ch.learn.filter(q=>r.topics.includes(q.t));
+  if(type==="multi") return auth;
+  return auth.concat(ch.terms.filter(x=>r.topics.includes(x.t)).map(x=>({id:"lt-"+x.id,t:x.t,termQ:x})));
+}
+const SINGLE_P={L1:"Which is an essential characteristic of a liability?",L7:"On a zero-interest-bearing note, which is true?",L14:"Which is an accrued liability?",L19:"Which is usually NOT accrued as a liability?",L24:"Which is a collection for a third party?",L26:"Which is NOT recorded as a liability?",L30:"Which is classified as a current liability?",L32:"Which is one of the requirements to accrue a loss contingency?",L37:"Which is neither recorded nor disclosed?"};
+const singular=p=>p.replace(/^Which are examples of current liabilities\?/,"Which is an example of a current liability?")
+  .replace(/^Which conditions must ALL exist/,"Which condition must exist").replace(/^Which rates are correct\?/,"Which rate is correct?")
+  .replace(/^Which loss contingencies are/,"Which loss contingency is").replace(/^Which liabilities are/,"Which liability is")
+  .replace(/^Which are /,"Which is ").replace(/^Which (describe|reduce|demonstrate)\b/,(m,v)=>"Which "+v+"s").replace(/ are correct\?$/," is correct?");
+function buildLearn(item){
+  const type=R(CH).lType||"mix";
+  if(item.termQ){const x=item.termQ; const tw=(CH.termWrong&&CH.termWrong[x.term])||[];
+    const d=(tw.length?tw.map(def=>({def})):shuffle(CH.terms.filter(o=>o.id!==x.id&&o.t===x.t))).slice(0,4);
+    return {label:"Term",prompt:`What is ${/^[A-Z]{2,}/.test(x.term)?x.term:x.term.charAt(0).toLowerCase()+x.term.slice(1)}?`,opts:shuffle([{text:x.def,ok:true},...d.map(o=>({text:o.def,ok:false}))]),need:1,why:`${x.term}: ${x.def}`}}
+  const multi=item.correct.length>=2&&(type==="multi"||(type==="mix"&&Math.random()<0.6));
+  if(multi) return {label:"Concept",prompt:item.prompt,opts:shuffle([...item.correct.map(t=>({text:t,ok:true})),...shuffle(item.wrong).slice(0,Math.max(2,6-item.correct.length)).map(t=>({text:t,ok:false}))]),need:item.correct.length,why:item.why};
+  const c=item.correct[Math.floor(Math.random()*item.correct.length)];
+  return {label:"Concept",prompt:(SINGLE_P[item.id]||singular(item.prompt)),opts:shuffle([{text:c,ok:true},...shuffle(item.wrong).slice(0,4).map(t=>({text:t,ok:false}))]),need:1,why:item.why};
+}
+const LBYID=id=>id.startsWith("lt-")?{id,t:TBYID(id.slice(3)).t,termQ:TBYID(id.slice(3))}:CH.learn.find(q=>q.id===id);
+function startLearn(n){
+  const r=R(CH); const pool=learnPool(CH,r); if(!pool.length) return;
+  const now=Date.now();
+  const picked=pool.map(q=>{const x=r.learn[q.id]||{box:0,seen:0,last:0};const ageH=x.last?(now-x.last)/36e5:999;
+    return {q,p:x.box*10-Math.min(ageH,48)/6+Math.random()*9-(x.seen?0:3)}}).sort((a,b)=>a.p-b.p).slice(0,n==="All"?pool.length:n).map(x=>x.q.id);
+  G={kind:"learn",queue:shuffle(picked).map(id=>({id,retry:false})),i:0,total:picked.length,cleared:0,first:0,answered:0,missed:[],locked:false};
+  renderLearn();
+}
+function renderLearn(){
+  const item=G.queue[G.i]; const it=LBYID(item.id); const Q=buildLearn(it); G.cur={item,it,Q,picked:0,wrongPick:false};
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Learn`);
+  const f=G.cleared/G.total, segs=6;
+  go(`<div class="quiz learn">
+    <div class="lprog">
+      <span class="lc done" title="Cleared">${G.cleared}</span>
+      <div class="segs">${Array.from({length:segs},(_,j)=>`<span class="lseg"><i style="width:${Math.max(0,Math.min(1,f*segs-j))*100}%"></i></span>`).join("")}</div>
+      <span class="lc" title="Total">${G.total}</span>
+      <button class="x" id="quit" aria-label="End session">${ICON.close}</button>
+    </div>
+    <section class="sheet qcard enter" id="card">
+      <div class="card-head"><span class="eyebrow">${Q.label} · ${esc(topicName(it.t))}</span>${item.retry?'<span class="tag retry">Try again</span>':""}</div>
+      <p class="prompt">${esc(Q.prompt)}</p>
+      <p class="lneed" id="need">${Q.need>1?`Select all that apply <b>(${Q.need} left)</b>`:"Choose one answer"}</p>
+      <div class="opts lopts">${Q.opts.map((o,i)=>`<button class="opt" data-i="${i}"><span class="ln">${i+1}</span><span class="ot">${esc(o.text)}</span><span class="om"></span></button>`).join("")}</div>
+      <div class="lfoot"><button class="dk" id="dk">Don't know?</button></div>
+    </section>
+    <div id="spacer"></div>
+  </div><div id="fb"></div>`);
+  $("#quit").onclick=()=>finishLearn(true);
+  app.querySelectorAll(".lopts .opt").forEach(b=>b.onclick=()=>pickLearn(b));
+  $("#dk").onclick=()=>{if(!G.locked) doneLearn(false,true)};
+  G.locked=false;
+}
+function pickLearn(b){
+  if(G.locked||b.disabled) return; const o=G.cur.Q.opts[+b.dataset.i]; b.disabled=true;
+  if(o.ok){ b.classList.add("ok"); b.querySelector(".om").innerHTML=CHECK; G.cur.picked++;
+    const left=G.cur.Q.need-G.cur.picked; const nd=$("#need");
+    if(left>0){ if(nd) nd.innerHTML=`Select all that apply <b>(${left} left)</b>`; } else doneLearn(true);
+  } else { b.classList.add("bad"); b.querySelector(".om").innerHTML=CROSS; doneLearn(false); }
+}
+function doneLearn(ok,dk){
+  G.locked=true; const {item,it,Q}=G.cur; const r=R(CH); const x=r.learn[it.id]||(r.learn[it.id]={box:0,seen:0,last:0});
+  x.seen++; x.last=Date.now();
+  app.querySelectorAll(".lopts .opt").forEach((b,i)=>{const o=Q.opts[i]; b.disabled=true;
+    if(o.ok&&!b.classList.contains("ok")){b.classList.add(ok?"ok":"missed"); b.querySelector(".om").innerHTML=CHECK}
+    else if(!o.ok&&!b.classList.contains("bad")) b.classList.add("dim")});
+  $("#dk").hidden=true;
+  if(ok){ x.box=Math.min(MAXBOX,item.retry?Math.max(1,x.box):x.box+1); G.cleared++; if(!item.retry) G.first++; }
+  else { x.box=0; if(!G.missed.includes(it.id)) G.missed.push(it.id); G.queue.splice(Math.min(G.queue.length,G.i+4),0,{id:item.id,retry:true}); }
+  if(!item.retry) G.answered++; save();
+  const fill=G.cleared/G.total; app.querySelectorAll(".segs .lseg i").forEach((el,j)=>el.style.width=Math.max(0,Math.min(1,fill*6-j))*100+"%");
+  const done=$(".lc.done"); if(done) done.textContent=G.cleared;
+  const last=G.i>=G.queue.length-1;
+  const correct=Q.opts.filter(o=>o.ok).map(o=>o.text);
+  const title=ok?PRAISE[Math.floor(Math.random()*PRAISE.length)]:dk?"Here's the answer":"Not quite";
+  const sub=ok?(item.retry?"Cleared on the retry.":`${G.cleared} of ${G.total} cleared`):"This one will come back in a few questions.";
+  $("#fb").innerHTML=`<div class="fbsheet ${ok?"ok":"bad"}" role="status"><div class="fb-in">
+    <div class="fb-head"><span class="fb-icon">${ok?CHECK:CROSS}</span><div class="fb-t"><strong>${title}</strong><span>${sub}</span></div></div>
+    ${ok?"":`<div class="fb-ans"><span>Correct answer${correct.length>1?"s":""}</span>${correct.map(c=>`<b>${esc(c)}</b>`).join("")}</div>`}
+    <p class="fb-why" id="why" ${ok?"hidden":""}>${esc(Q.why)}</p>
+    <div class="fb-actions"><button class="btn fb-explain" id="explain">${ok?"Explain":"Hide explanation"}</button>
+      <button class="btn big ${ok?"primary":"danger"}" id="next">${last?"Finish":"Continue"}</button></div></div></div>`;
+  const fit=()=>{const sh=$(".fbsheet"),sp=$("#spacer"); if(sh&&sp) sp.style.height=sh.offsetHeight+16+"px"}; fit();
+  $("#explain").onclick=()=>{const w=$("#why"),b=$("#explain"); w.hidden=!w.hidden; b.textContent=w.hidden?"Explain":"Hide explanation"; fit()};
+  $("#next").focus({preventScroll:true});
+  $("#next").onclick=()=>{G.i++; if(G.i>=G.queue.length) return finishLearn(false); renderLearn()};
+}
+function finishLearn(quit){
+  const acc=G.answered?Math.round(G.first/G.answered*100):0;
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Learn`);
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:22px">
+  <section class="panel panel-pad enter"><div class="result-top">${ring(acc/100,96)}<div><span class="eyebrow">${quit?"Session ended early":"Session complete"}</span>
+    <p class="verdict" style="color:${acc>=70?"var(--accent)":"var(--red)"}">${acc>=90?"Locked in":acc>=70?"Getting there":"Keep practicing"}</p></div></div>
+    <div class="statgrid"><div><b>${G.first}/${G.answered}</b><span>Right first try</span></div><div><b>${G.cleared}/${G.total}</b><span>Cleared</span></div><div><b>${G.missed.length}</b><span>Missed at least once</span></div></div></section>
+  ${G.missed.length?`<section class="panel panel-pad enter"><h2>Review these</h2><div class="misses">${G.missed.map(id=>{const it=LBYID(id);
+    return it.termQ?`<div class="miss"><p class="ans" style="margin:0">${esc(it.termQ.term)}</p><p class="why">${esc(it.termQ.def)}</p></div>`
+    :`<div class="miss"><p>${esc(it.prompt)}</p>${it.correct.map(c=>`<p class="ans">${esc(c)}</p>`).join("")}<p class="why">${esc(it.why)}</p></div>`}).join("")}</div></section>`:""}
+  <div class="row"><button class="btn primary big" id="again">Another session</button><button class="btn quiet" id="back">Change settings</button></div></div>`);
+  const r=R(CH);
+  $("#again").onclick=()=>startLearn(r.lCount); $("#back").onclick=()=>setup(CH);
+}
+document.addEventListener("keydown",e=>{
+  if(!G||G.kind!=="learn"||!$("#card")||$("#settings")) return;
+  if(!G.locked&&/^[1-6]$/.test(e.key)){const b=app.querySelectorAll(".lopts .opt")[+e.key-1]; if(b){e.preventDefault();b.click()}}
+  else if(G.locked&&e.key==="Enter"){const n=$("#next"); if(n&&document.activeElement!==n){e.preventDefault();n.click()}}
+});
+
+/* ================= quick-fire ================= */
+function pickCards(mode,n){
+  const r=R(CH); let pool=CH.cards.filter(c=>r.topics.includes(c.t)); if(mode==="drill") pool=missPool();
+  const now=Date.now();
+  return shuffle(pool.map(c=>{const x=r.cards[c.id]||{box:0,seen:0,last:0};const ageH=x.last?(now-x.last)/36e5:999;
+    let p=x.box*10-Math.min(ageH,48)/6+Math.random()*9; if(!x.seen)p-=3; return {c,p}}).sort((a,b)=>a.p-b.p).slice(0,n).map(x=>x.c)).map(c=>({id:c.id,retry:false}));
+}
+function startQuick(mode,n){
+  const q=pickCards(mode,n); if(!q.length) return;
+  G={kind:"quick",queue:q,i:0,score:0,streak:0,bestStreak:0,flags:3,correct:0,answered:0,missed:[],locked:false,t0:0,promoted:0};
+  renderQuick();
+}
+const mult=()=>Math.min(4,1+Math.floor(G.streak/3));
+const BYID=id=>CH.cards.find(c=>c.id===id);
+const HEART=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3 4.5 6.7 4.5c2.1 0 3.6 1.1 5.3 3 1.7-1.9 3.2-3 5.3-3 3.7 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>`;
+const FLAME=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c1 3.5 5 5.8 5 10.5A5 5 0 0 1 12 18a5 5 0 0 1-5-5.2c0-2 1-3.5 2.3-4.6.1 1.7.9 2.9 2 3.3C11 8.8 11.5 5.3 12 2z" fill="currentColor"/><path d="M12 22a4 4 0 0 1-4-4c0-1.6 1-2.7 2-3.4.2 1.2.9 2 2 2.2 0-1.5.6-2.6 1.6-3.6.9 1.3 2.4 2.6 2.4 4.8a4 4 0 0 1-4 4z" fill="currentColor" opacity=".55"/></svg>`;
+const CHECK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>`;
+const CROSS=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>`;
+const CLOCK=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg>`;
+const flagsHtml=()=>`<span class="hearts" id="hearts" aria-label="${G.flags} hearts left">${HEART}<b>${G.flags}</b></span>`;
+function streakHtml(){return G.streak>=2?`${FLAME}<b>${G.streak}</b>${mult()>1?`<small>×${mult()}</small>`:""}`:""}
+function renderQuick(){
+  const item=G.queue[G.i]; const c=BYID(item.id);
+  const opts=c.type==="sort"?c.opts:(c.opts?shuffle(c.opts):null);
+  G.cur={item,c};
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Quick-fire`);
+  go(`<div class="quiz">
+  <div class="qtop">
+    <button class="x" id="quit" aria-label="End round">${ICON.close}</button>
+    <div class="track"><i style="width:${G.i/G.queue.length*100}%"></i></div>
+    ${flagsHtml()}
+  </div>
+  <div class="qmeta">
+    <span class="qcount">${G.i+1} / ${G.queue.length}</span>
+    <span class="qpill streak" id="combo" ${G.streak>=2?"":"hidden"}>${streakHtml()}</span>
+    <span class="qpill clock" id="clock" hidden>${CLOCK}<b id="secs"></b></span>
+    <span class="qpill pts"><b id="score">${fmt(G.score)}</b> pts</span>
+  </div>
+  <div class="timer"><i id="tbar"></i></div>
+  <section class="sheet qcard enter" id="card">
+    <div class="card-head"><span class="eyebrow">${esc(topicName(c.t))}</span>
+      ${item.retry?'<span class="tag retry">Try again</span>':`<span class="tag">${({mc:"Multiple choice",je:"Journal entry",sort:"Quick sort",num:"Type the answer"})[c.type]}</span>`}</div>
+    ${cardBody(c,opts)}
+  </section>
+  <div id="spacer"></div>
+</div>
+<div id="fb"></div>`);
+  $("#quit").onclick=()=>finishQuick(true);
+  if(c.type==="num"){const inp=$("#numin"); inp.focus();
+    $("#numform").addEventListener("submit",e=>{e.preventDefault(); if(G.locked) return; const v=parseFloat(inp.value.replace(/[$,\s]/g,"")); if(isNaN(v)){inp.focus();return} answerQuick(Math.abs(v-c.ans)<0.5,"$"+fmt(c.ans),null)});
+  } else app.querySelectorAll(".opt").forEach(b=>b.addEventListener("click",()=>{if(!G.locked) answerQuick(b.dataset.v===c.ans,c.ans,b)}));
+  G.locked=false; G.t0=performance.now(); runTimer();
+}
+function cardBody(c,opts){
+  const k=(o,i,amt)=>`<button class="opt${amt?" amount":""}" data-v="${esc(o)}"><span class="ob">${"ABCD"[i]}</span><span class="ot">${esc(o)}</span><span class="om"></span></button>`;
+  if(c.type==="mc") return `<p class="prompt">${esc(c.prompt)}</p><div class="opts">${opts.map((o,i)=>k(o,i)).join("")}</div>`;
+  if(c.type==="sort") return `<p class="eyebrow" style="margin:0">${SET_Q[c.set]}</p><p class="big-item">${esc(c.item)}</p><div class="opts">${opts.map((o,i)=>k(o,i)).join("")}</div>`;
+  if(c.type==="num") return `<p class="prompt">${esc(c.prompt)}</p><form class="numrow" id="numform" autocomplete="off"><label for="numin" aria-label="Your answer in dollars"><input id="numin" inputmode="decimal" placeholder="Type your answer"></label><button class="btn primary big" type="submit">Check</button></form>`;
+  const [bi,bf]=c.blank; const isAmt=bf!=="acct";
+  const rows=c.lines.map((l,i)=>{const cr=!l[1]&&l[2]; const cell=(v,f)=>(i===bi&&f===bf)?`<span class="blank" id="blank">?</span>`:(c.hide.some(h=>h[0]===i&&h[1]===f)?`<span class="hid" data-v="${esc(v)}" title="Hidden: work it out">?</span>`:esc(v));
+    return `<tr><td class="date">${i===0?esc(c.date||""):""}</td><td class="${cr?"cr-acct":""}">${cell(l[0],"acct")}</td><td class="amt">${cell(l[1],"dr")}</td><td class="amt">${cell(l[2],"cr")}</td></tr>`}).join("");
+  return `<p class="scenario">${esc(c.scenario)}</p><div class="je-wrap"><table class="je"><thead><tr><th>Date</th><th>Account</th><th class="amt">Debit</th><th class="amt">Credit</th></tr></thead><tbody>${rows}</tbody></table></div><p class="eyebrow" style="margin:0 0 10px">Fill in the blank</p><div class="opts">${opts.map((o,i)=>k(o,i,isAmt)).join("")}</div>`;
+}
+const tlim=()=>S.settings.timer*1000;
+function setupClock(){const on=!!S.settings.timer; const c=$("#clock"), t=$(".timer"); if(c) c.hidden=!on; if(t) t.style.visibility=on?"visible":"hidden";}
+function runTimer(){stopTimer();setupClock();const b=$("#tbar");if(!b||!S.settings.timer||!G||G.locked)return;
+  const secs=$("#secs"), clock=$("#clock");
+  const tick=()=>{if(!G||G.locked||G.kind!=="quick")return; const left=Math.max(0,tlim()-(performance.now()-G.t0)); const f=left/tlim();
+    b.style.width=f*100+"%"; if(secs) secs.textContent=Math.ceil(left/1000)+"s"; if(clock) clock.classList.toggle("low",left<=5000);
+    if(left<=0){timeUp();return} timerRAF=requestAnimationFrame(tick)};
+  timerRAF=requestAnimationFrame(tick)}
+function timeUp(){const secs=$("#secs"), clock=$("#clock"); if(secs) secs.textContent="No bonus"; if(clock) clock.classList.add("low","over"); const b=$("#tbar"); if(b) b.style.width="0%";}
+function stopTimer(){cancelAnimationFrame(timerRAF)}
+const PRAISE=["Correct!","Nice work!","Nailed it!","Exactly right!","You got it!"];
+function answerQuick(ok,correct,btn,timedOut){
+  G.locked=true; stopTimer();
+  const {item,c}=G.cur; const r=R(CH); const x=r.cards[c.id]||(r.cards[c.id]={box:0,seen:0,miss:0,last:0});
+  const el=performance.now()-G.t0; x.seen++; x.last=Date.now(); let pts=0;
+  if(ok){const b0=x.box; x.box=Math.min(MAXBOX,item.retry?Math.max(1,x.box):x.box+1); if(x.box>b0)G.promoted++;
+    if(!item.retry){G.streak++;G.bestStreak=Math.max(G.bestStreak,G.streak);pts=(100+(S.settings.timer?Math.round(50*Math.max(0,1-el/tlim())):0))*mult();G.score+=pts;G.correct++}}
+  else{x.box=0;x.miss=(x.miss||0)+1;G.streak=0; if(!item.retry){G.flags--; if(!G.missed.includes(c.id))G.missed.push(c.id)} G.queue.splice(Math.min(G.queue.length,G.i+4),0,{id:c.id,retry:true})}
+  if(!item.retry) G.answered++; save();
+  app.querySelectorAll(".opt").forEach(b=>{b.disabled=true;
+    if(b.dataset.v===c.ans){b.classList.add("ok");b.querySelector(".om").innerHTML=CHECK}
+    else if(b===btn){b.classList.add("bad");b.querySelector(".om").innerHTML=CROSS}
+    else b.classList.add("dim")});
+  const bl=$("#blank"); if(bl){bl.textContent=c.ans;bl.classList.add("ok")}
+  app.querySelectorAll(".hid").forEach(h=>{h.textContent=h.dataset.v;h.classList.add("shown")});
+  const inp=$("#numin"); if(inp){inp.disabled=true; inp.classList.add(ok?"ok":"bad")}
+  const card=$("#card");
+  if(!ok&&!reduce){card.classList.remove("shake","enter");void card.offsetWidth;card.classList.add("shake")}
+  $("#score").textContent=fmt(G.score); const cb=$("#combo"); cb.hidden=G.streak<2; cb.innerHTML=streakHtml();
+  const h=$("#hearts"); if(h){h.outerHTML=flagsHtml(); if(!ok&&!item.retry&&!reduce) $("#hearts").classList.add("lose")}
+  const last=G.i>=G.queue.length-1||G.flags<=0;
+  const title=timedOut?"Time's up":ok?(item.retry?"Got it this time":PRAISE[Math.floor(Math.random()*PRAISE.length)]):"Not quite";
+  const sub=ok?(item.retry?"No points on a retry, but it's cleared.":`+${fmt(pts)} pts${G.streak>=2?` · ${G.streak} in a row`:""}${mult()>1?` · ×${mult()} bonus`:""}`)
+             :(item.retry?"It'll come back once more.":`−1 heart · ${G.flags} left. You'll see this one again.`);
+  const showWhy=!ok;
+  $("#fb").innerHTML=`<div class="fbsheet ${ok?"ok":"bad"}" role="status"><div class="fb-in">
+    <div class="fb-head"><span class="fb-icon">${ok?CHECK:CROSS}</span><div class="fb-t"><strong>${title}</strong><span>${sub}</span></div></div>
+    ${ok?"":`<p class="fb-ans"><span>Correct answer</span><b>${esc(correct)}</b></p>`}
+    <p class="fb-why" id="why" ${showWhy?"":"hidden"}>${esc(c.why)}</p>
+    <div class="fb-actions"><button class="btn fb-explain" id="explain" aria-expanded="${showWhy}">${showWhy?"Hide explanation":"Explain"}</button>
+      <button class="btn big ${ok?"primary":"danger"}" id="next">${G.flags<=0?"See results":last?"Finish":"Continue"}</button></div>
+  </div></div>`;
+  const fit=()=>{const sh=$(".fbsheet"),sp=$("#spacer"); if(sh&&sp) sp.style.height=sh.offsetHeight+16+"px"};
+  fit();
+  $("#explain").onclick=()=>{const w=$("#why"),b=$("#explain"); w.hidden=!w.hidden; b.textContent=w.hidden?"Explain":"Hide explanation"; b.setAttribute("aria-expanded",String(!w.hidden)); fit()};
+  $("#next").focus({preventScroll:true});
+  $("#next").onclick=()=>{if(G.flags<=0)return finishQuick(false,true); G.i++; if(G.i>=G.queue.length)return finishQuick(false); renderQuick()};
+}
+function finishQuick(quit,audited){
+  const r=R(CH); r.shifts++; const nb=G.score>r.best; if(nb)r.best=G.score; save();
+  const acc=G.answered?Math.round(G.correct/G.answered*100):0;
+  const verdict=audited?"Out of hearts":quit?"Round ended early":acc>=90?"Clean opinion":acc>=70?"Qualified opinion":"Needs adjusting entries";
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Results`);
+  const mp=missPool().length;
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:22px">
+  <section class="panel panel-pad enter"><div class="result-top">${ring(acc/100,96)}<div>
+    <span class="eyebrow">${audited?"Out of hearts":"Books closed"}</span>
+    <p class="verdict" style="color:${audited||acc<70?"var(--red)":"var(--accent)"}">${verdict}</p></div></div>
+    <div class="statgrid"><div><b>${fmt(G.score)}</b><span>${nb?"New best":"Score"}</span></div><div><b>${G.correct}/${G.answered}</b><span>First-try correct</span></div><div><b>${G.bestStreak}</b><span>Best streak</span></div></div>
+  </section>
+  <section class="panel panel-pad enter"><h2>${G.missed.length?"Review these":"No misses this round"}</h2>
+    ${G.missed.length?`<div class="misses">${G.missed.map(id=>{const c=BYID(id);const q=c.type==="sort"?c.item:c.type==="je"?c.scenario:c.prompt;
+      return `<div class="miss"><p>${esc(q)}</p><p class="ans">${esc(c.type==="num"?"$"+fmt(c.ans):c.ans)}</p><p class="why">${esc(c.why)}</p></div>`}).join("")}</div>`:`<p style="margin:8px 0 0">Every card posted on the first try. ${G.promoted} cards moved up a level.</p>`}
+  </section>
+  <div class="row"><button class="btn primary big" id="again">Another round</button>${mp?`<button class="btn" id="drill">Drill misses (${mp})</button>`:""}<button class="btn quiet" id="back">Change settings</button></div></div>`);
+  const r2=R(CH);
+  $("#again").onclick=()=>startQuick("round",r2.qCount==="All"?CH.cards.length:r2.qCount);
+  $("#back").onclick=()=>setup(CH);
+  const d=$("#drill"); if(d) d.onclick=()=>startQuick("drill",Math.min(20,mp));
+}
+
+/* ================= free response ================= */
+let samplerP=null; const sampler=()=>samplerP||(samplerP=(window.claude&&window.claude.use?window.claude.use("sample"):Promise.resolve(null)).catch(()=>null));
+let aiOff=false;
+const maxPts=p=>p.rubric.reduce((s,x)=>s+x[0],0);
+function startFrq(n){
+  const r=R(CH); const pool=CH.frqs.filter(f=>r.topics.includes(f.t));
+  const list=pool.map(f=>{const x=r.frq[f.id];return {f,p:(x?x.best:-0.2)+Math.random()*0.3}}).sort((a,b)=>a.p-b.p).slice(0,n).map(x=>x.f.id);
+  if(!list.length) return;
+  G={kind:"frq",list,i:0,earned:0,possible:0,log:[]};
+  renderFrq();
+}
+function renderFrq(){
+  const f=CH.frqs.find(x=>x.id===G.list[G.i]); G.f=f; G.ans=f.parts.map(()=>"" ); G.done=false; G.ctl=null;
+  const tot=f.parts.reduce((s,p)=>s+maxPts(p),0);
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Free response`,`<span class="mono">${G.i+1} / ${G.list.length}</span>`);
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:18px">
+  <div class="track"><i style="width:${G.i/G.list.length*100}%"></i></div>
+  <section class="sheet enter" id="card">
+    <div class="card-head"><span class="eyebrow">${esc(topicName(f.t))}</span><span class="tag">${tot} points</span></div>
+    <h2 style="font-size:26px;margin-bottom:12px">${esc(f.title)}</h2>
+    <div class="exhibit">${esc(f.scenario)}</div>
+    <div class="tipbar">${ICON.tip}<span>Write complete account names (Accounts Receivable, not A/R). For entries, put debits first and indent credits. Show your math.</span></div>
+    <div class="parts">${f.parts.map((p,i)=>`<div class="part" id="part-${i}">
+      <div class="part-h"><span class="lt">${"abcdefg"[i]}</span><p>${esc(p.q)}</p><span class="pt">${maxPts(p)} pt${maxPts(p)>1?"s":""}</span></div>
+      ${(CH.hints&&CH.hints[f.id]&&CH.hints[f.id][i])?`<div class="hintwrap"><button class="hintbtn" data-h="${i}" aria-expanded="false" aria-controls="hint-${i}">${ICON.bulb}<span>Show hint</span></button>
+        <div class="hintbox" id="hint-${i}" hidden>${ICON.bulb}<p>${esc(CH.hints[f.id][i])}</p></div></div>`:""}
+      <textarea id="ans-${i}" aria-label="Answer to part ${"abcdefg"[i]}" spellcheck="false" placeholder="${/record|journal|entry|entries/i.test(p.q)?"Cash                     60,000\n    Notes Payable                   60,000":"Your answer…"}"></textarea>
+      <div class="gslot" id="g-${i}"></div></div>`).join("")}</div>
+    <div class="row" style="margin-top:22px" id="gradebar">
+      <button class="btn primary" id="ai" hidden>Grade with Claude</button>
+      <button class="btn" id="self">Grade it myself</button>
+      <span class="note" id="gmsg"></span>
+    </div>
+  </section></div>`);
+  f.parts.forEach((_,i)=>{const t=$("#ans-"+i); t.addEventListener("input",()=>{G.ans[i]=t.value})});
+  G.hintsUsed=0;
+  app.querySelectorAll(".hintbtn").forEach(b=>b.onclick=()=>{const box=$("#hint-"+b.dataset.h); const open=box.hidden; box.hidden=!open;
+    if(open&&!b.dataset.used){b.dataset.used="1";G.hintsUsed++}
+    b.setAttribute("aria-expanded",String(open)); b.querySelector("span").textContent=open?"Hide hint":"Show hint"});
+  sampler().then(s=>{const b=$("#ai"); if(b&&s&&!aiOff){b.hidden=false}});
+  $("#ai").onclick=gradeAI; $("#self").onclick=gradeSelf;
+}
+function lockAnswers(){G.f.parts.forEach((_,i)=>{const t=$("#ans-"+i); if(t) t.readOnly=true})}
+async function gradeAI(){
+  const f=G.f; if(!G.ans.some(a=>a.trim())){$("#gmsg").textContent="Write at least one answer first.";return}
+  const s=await sampler(); if(!s){aiOff=true;return gradeSelf()}
+  lockAnswers();
+  G.ctl=new AbortController();
+  $("#gradebar").innerHTML=`<div class="grading"><span class="spin"></span><span>Claude is grading your answers…</span></div><button class="btn quiet" id="stop">Stop</button>`;
+  $("#stop").onclick=()=>G.ctl&&G.ctl.abort();
+  const prompt=[
+   "You are grading a student's free-response answers for a university intermediate accounting course, Chapter 13 (Current Liabilities and Contingencies).",
+   "Grade each part against its rubric. Award each rubric item's points fully when the student's answer satisfies it, half when partly right, else 0. Accept equivalent wording, reasonable account-name synonyms (e.g. Unearned Revenue for Deferred Revenue), and correct alternative calculations. Amounts must be correct. Ignore formatting and alignment.",
+   "The professor requires complete account names in journal entries: if the student uses an abbreviation like A/P, N/P or A/R in place of an account name, deduct half a point from that item and say so.",
+   "A blank answer earns 0. Keep feedback to 1–2 short, specific sentences addressed to the student ('you').",
+   "", "PROBLEM: "+f.scenario, "",
+   ...f.parts.map((p,i)=>[`PART ${"abcdefg"[i]} (${maxPts(p)} points): ${p.q}`, "Rubric:", ...p.rubric.map(x=>`- [${x[0]} pt] ${x[1]}`), "Model answer:", p.model, "Student answer:", '"""'+(G.ans[i].trim()||"(blank)")+'"""', ""].join("\n")),
+   'Reply with only JSON in this shape: {"parts":[{"part":"a","score":2,"max":3,"feedback":"...","missed":["rubric item text not fully earned"]}]} with one entry per part, in order.'
+  ].join("\n");
+  try{
+    const res=await s.json(prompt,{signal:G.ctl.signal,modelTier:"default"});
+    const arr=Array.isArray(res?.parts)?res.parts:[];
+    const grades=f.parts.map((p,i)=>{const g=arr[i]||{}; const mx=maxPts(p); let sc=Number(g.score); if(!isFinite(sc))sc=0; sc=Math.max(0,Math.min(mx,Math.round(sc*2)/2));
+      return {score:sc,max:mx,feedback:String(g.feedback||""),missed:Array.isArray(g.missed)?g.missed.map(String).slice(0,6):[]}});
+    showGrades(grades,"Claude");
+  }catch(e){
+    const code=e&&e.code;
+    if(code==="cancelled"){restoreBar("Grading stopped. Your answers are still here.");return}
+    if(["not_granted","sampling_disabled","not_declared","capability_disabled","capability_removed"].includes(code)){aiOff=true;return gradeSelf("Claude grading isn't available here, so grade yourself against the rubric.")}
+    restoreBar(code==="rate_limited"?"Too many grading requests right now. Try again in a minute, or grade it yourself.":"Grading didn't finish. Try again, or grade it yourself.");
+  }
+}
+function restoreBar(msg){G.f.parts.forEach((_,i)=>{const t=$("#ans-"+i); if(t) t.readOnly=false});
+  $("#gradebar").innerHTML=`<button class="btn primary" id="ai">Grade with Claude</button><button class="btn" id="self">Grade it myself</button><span class="note" id="gmsg">${esc(msg)}</span>`;
+  $("#ai").onclick=gradeAI; $("#self").onclick=()=>gradeSelf()}
+function gradeSelf(msg){
+  const f=G.f; lockAnswers();
+  f.parts.forEach((p,i)=>{$("#g-"+i).innerHTML=`<div class="grade">
+     <details class="model" open><summary>Model answer</summary><pre class="model">${esc(p.model)}</pre></details>
+     <div class="rubric">${p.rubric.map((x,j)=>`<label><input type="checkbox" id="rb-${i}-${j}" data-p="${x[0]}"><span>${esc(x[1])}</span><span class="rp">${x[0]} pt</span></label>`).join("")}</div></div>`});
+  $("#gradebar").innerHTML=`<button class="btn primary" id="rec">Record my score</button><span class="note">${esc(msg||"Check each rubric item your answer earned.")}</span>`;
+  $("#rec").onclick=()=>{const grades=f.parts.map((p,i)=>{let sc=0;app.querySelectorAll(`[id^="rb-${i}-"]`).forEach(c=>{if(c.checked)sc+=+c.dataset.p});
+     const missed=p.rubric.filter((x,j)=>!$(`#rb-${i}-${j}`).checked).map(x=>x[1]); return {score:sc,max:maxPts(p),feedback:"",missed}}); showGrades(grades,"you")};
+  $("#part-0").scrollIntoView({block:"start",behavior:reduce?"auto":"smooth"});
+}
+function showGrades(grades,by){
+  const f=G.f; const got=grades.reduce((s,g)=>s+g.score,0), mx=grades.reduce((s,g)=>s+g.max,0);
+  f.parts.forEach((p,i)=>{const g=grades[i]; const cls=g.score>=g.max?"full":g.score===0?"part0":"partial";
+    $("#g-"+i).innerHTML=`<div class="grade ${cls}"><div class="gh"><span class="score">${g.score} / ${g.max}</span><span class="eyebrow">Graded by ${by}</span></div>
+      ${g.feedback?`<p>${esc(g.feedback)}</p>`:""}
+      ${g.missed.length&&g.score<g.max?`<ul>${g.missed.map(m=>`<li>${esc(m)}</li>`).join("")}</ul>`:""}
+      <details class="model" ${g.score<g.max?"open":""}><summary>Model answer</summary><pre class="model">${esc(p.model)}</pre></details></div>`});
+  const r=R(CH); const x=r.frq[f.id]||(r.frq[f.id]={best:0,tries:0}); const pct=mx?got/mx:0; x.best=Math.max(x.best,pct); x.last=Date.now(); x.tries++; save();
+  G.earned+=got; G.possible+=mx; G.log.push({id:f.id,title:f.title,got,mx});
+  const card=$("#card"); const st=document.createElement("div"); st.className="stamp "+(pct>=0.7?"ok":"bad"); st.textContent=`${got}/${mx}`; card.appendChild(st);
+  const last=G.i>=G.list.length-1;
+  $("#gradebar").innerHTML=`<span class="mono" style="font-weight:600;font-size:18px">${got} / ${mx} points</span><button class="btn primary" id="nextf" style="margin-left:auto">${last?"See results":"Next problem"}</button>`;
+  $("#nextf").onclick=()=>{if(last)return finishFrq(); G.i++; renderFrq()};
+  window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
+}
+function finishFrq(){
+  const pct=G.possible?G.earned/G.possible:0;
+  topbar(`<button id="crumb-ch">Ch. ${CH.num}</button> / Results`);
+  go(`<div class="narrow" style="display:flex;flex-direction:column;gap:22px">
+  <section class="panel panel-pad enter"><div class="result-top">${ring(pct,96)}<div><span class="eyebrow">Free-response set</span>
+    <p class="verdict" style="color:${pct>=0.7?"var(--accent)":"var(--red)"}">${pct>=0.9?"Exam ready":pct>=0.7?"Solid work":"Keep practicing"}</p></div></div>
+    <div class="statgrid"><div><b>${G.earned}/${G.possible}</b><span>Points</span></div><div><b>${G.log.length}</b><span>Problems</span></div><div><b>${Math.round(pct*100)}%</b><span>Score</span></div></div></section>
+  <section class="panel panel-pad enter"><h2>Problems</h2><div class="misses">${G.log.map(l=>`<div class="miss"><div class="row" style="justify-content:space-between"><p>${esc(l.title)}</p><span class="mono" style="font-weight:600;color:${l.got/l.mx>=0.7?"var(--accent)":"var(--red)"}">${l.got} / ${l.mx}</span></div></div>`).join("")}</div></section>
+  <div class="row"><button class="btn primary big" id="again">Another set</button><button class="btn quiet" id="back">Change settings</button></div></div>`);
+  const r=R(CH);
+  $("#again").onclick=()=>startFrq(r.fCount==="All"?CH.frqs.length:r.fCount);
+  $("#back").onclick=()=>setup(CH);
+}
+
+/* keyboard (quick-fire) */
+document.addEventListener("keydown",e=>{
+  if(!G||G.kind!=="quick"||!$("#card")||$("#settings")) return;
+  if(e.target.tagName==="INPUT"&&e.key!=="Enter") return;
+  const kk=e.key.toLowerCase(); const idx="1234".includes(kk)&&kk?+kk-1:"abcd".indexOf(kk);
+  if(!G.locked&&e.target.tagName!=="INPUT"&&kk.length===1&&idx>=0){const b=app.querySelectorAll(".opt")[idx]; if(b){e.preventDefault();b.click()}}
+  else if(G.locked&&e.key==="Enter"){const n=$("#next"); if(n&&document.activeElement!==n){e.preventDefault();n.click()}}
+});
+
+sampler();
+library();
+})();
+</script>
+</body>
+</html>
